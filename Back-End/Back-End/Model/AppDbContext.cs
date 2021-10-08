@@ -14,5 +14,8 @@ namespace Back_End.Model
         }
 
         public DbSet<Slider> Sliders { get; set; }
+
+        public DbSet<Setting> Settings { get; set; }
+
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\source\\repos\\Back-End\\Back-End\\Back-End.csproj": {}
+    "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\Back-End.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\source\\repos\\Back-End\\Back-End\\Back-End.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\Back-End.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\Back-End\\Back-End\\Back-End.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\Back-End.csproj",
         "projectName": "Back-End",
-        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Back-End\\Back-End\\Back-End.csproj",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\Back-End.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\Back-End\\Back-End\\obj\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
