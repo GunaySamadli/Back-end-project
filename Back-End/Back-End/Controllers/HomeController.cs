@@ -27,7 +27,8 @@ namespace Back_End.Controllers
                 Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList(),
                 Abouts = _context.Abouts.ToList(),
                 Services = _context.Services.Take(3).ToList(),
-                Tags=_context.Tags.ToList()
+                Tags=_context.Tags.ToList(),
+                Statuses=_context.Statuses.ToList()
             };
             return View(homeVM);
         }

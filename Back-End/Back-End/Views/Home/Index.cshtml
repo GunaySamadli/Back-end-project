@@ -112,10 +112,11 @@
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Status</option>
-                                            <option>Open house</option>
-                                            <option>Rent</option>
-                                            <option>Sale</option>
-                                            <option>Sold</option>
+
+                                            @foreach (var status in Model.Statuses)
+                                            {
+                                                <option>@status.Name</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">

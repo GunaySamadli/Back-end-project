@@ -21,6 +21,8 @@ namespace Back_End.Model
 
         public DbSet<Service> Services { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+
 
 
     }
