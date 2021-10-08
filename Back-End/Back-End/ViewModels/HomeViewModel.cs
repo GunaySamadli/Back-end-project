@@ -13,6 +13,8 @@ namespace Back_End.ViewModels
         public List<About> Abouts { get; set; }
 
         public List<Service> Services { get; set; }
+        public List<Tag> Tags { get; set; }
+
 
 
     }

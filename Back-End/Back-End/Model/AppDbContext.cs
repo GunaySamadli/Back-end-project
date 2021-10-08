@@ -20,8 +20,7 @@ namespace Back_End.Model
         public DbSet<Team> Teams { get; set; }
 
         public DbSet<Service> Services { get; set; }
-
-
+        public DbSet<Tag> Tags { get; set; }
 
 
     }

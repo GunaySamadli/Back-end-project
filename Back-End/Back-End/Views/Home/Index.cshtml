@@ -986,78 +986,19 @@
             </div>
         </div>
         <div class="row ltn__category-slider-active--- slick-arrow-1 justify-content-center">
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-car"></i></span>
-                        <span class="category-title">Parking Space</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
+            @foreach (var tags in Model.Tags)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="ltn__category-item ltn__category-item-5 text-center">
+                        <a href="shop.html">
+                            <span class="category-icon"><i class="@tags.Image"></i></span>
+                            <span class="category-title">@tags.Name</span>
+                            <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-swimming"></i></span>
-                        <span class="category-title">Swimming Pool</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-secure-shield"></i></span>
-                        <span class="category-title">Private Security</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-stethoscope"></i></span>
-                        <span class="category-title">Medical Center</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-book"></i></span>
-                        <span class="category-title">Library Area</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-bed-1"></i></span>
-                        <span class="category-title">King Size Beds</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-home-2"></i></span>
-                        <span class="category-title">Smart Homes</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
-                        <span class="category-icon"><i class="flaticon-slider"></i></span>
-                        <span class="category-title">Kid’s Playland</span>
-                        <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-            </div>
+
+            }
         </div>
     </div>
 </div>
