@@ -29,7 +29,8 @@ namespace Back_End.Controllers
                 Services = _context.Services.Take(3).ToList(),
                 Tags=_context.Tags.ToList(),
                 Statuses=_context.Statuses.ToList(),
-                Cities=_context.Cities.ToList()
+                Cities=_context.Cities.ToList(),
+                Categories=_context.Categories.ToList()
             };
             return View(homeVM);
         }

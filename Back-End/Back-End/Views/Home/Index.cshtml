@@ -121,10 +121,10 @@
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Type</option>
-                                            <option>Apartment</option>
-                                            <option>Co-op</option>
-                                            <option>Condo</option>
-                                            <option>Single Family Home</option>
+                                            @foreach (var category in Model.Categories)
+                                            {
+                                                <option>@category.Name</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">

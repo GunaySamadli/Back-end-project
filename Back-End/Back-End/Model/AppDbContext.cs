@@ -23,8 +23,7 @@ namespace Back_End.Model
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<City> Cities { get; set; }
-
-
+        public DbSet<Category> Categories { get; set; }
 
 
     }

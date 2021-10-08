@@ -16,6 +16,8 @@ namespace Back_End.ViewModels
         public List<Tag> Tags { get; set; }
         public List<Status> Statuses { get; set; }
         public List<City> Cities { get; set; }
+        public List<Category> Categories { get; set; }
+
 
 
 
