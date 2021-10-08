@@ -213,22 +213,14 @@
                         </p>
                     </div>
                     <ul class="ltn__list-item-half clearfix">
+                        @foreach (var about in Model.Abouts)
+                        {
                         <li>
-                            <i class="flaticon-home-2"></i>
-                            Smart Home Design
+                            @Html.Raw(about.Icon)
+                            @about.Title
                         </li>
-                        <li>
-                            <i class="flaticon-mountain"></i>
-                            Beautiful Scene Around
-                        </li>
-                        <li>
-                            <i class="flaticon-heart"></i>
-                            Exceptional Lifestyle
-                        </li>
-                        <li>
-                            <i class="flaticon-secure"></i>
-                            Complete 24/7 Security
-                        </li>
+
+                        }
                     </ul>
                     <div class="ltn__callout bg-overlay-theme-05  mt-30">
                         <p>

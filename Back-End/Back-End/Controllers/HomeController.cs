@@ -24,7 +24,8 @@ namespace Back_End.Controllers
         {
             HomeViewModel homeVM = new HomeViewModel
             {
-                Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList()
+                Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList(),
+                Abouts = _context.Abouts.ToList()
             };
             return View(homeVM);
         }
