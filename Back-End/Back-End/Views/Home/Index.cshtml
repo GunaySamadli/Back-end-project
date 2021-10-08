@@ -102,11 +102,10 @@
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Choose Area</option>
-                                            <option>chicago</option>
-                                            <option>London</option>
-                                            <option>Los Angeles</option>
-                                            <option>New York</option>
-                                            <option>New Jersey</option>
+                                            @foreach (var city in Model.Cities)
+                                            {
+                                                <option>@city.Name</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
