@@ -19,6 +19,9 @@ namespace Back_End.Model
         public DbSet<About> Abouts { get; set; }
         public DbSet<Team> Teams { get; set; }
 
+        public DbSet<Service> Services { get; set; }
+
+
 
 
     }

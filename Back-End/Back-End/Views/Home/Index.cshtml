@@ -184,6 +184,7 @@
 </div>
 <!-- CAR DEALER FORM AREA END -->
 <!-- ABOUT US AREA START -->
+<!-- ABOUT US AREA START -->
 <div class="ltn__about-us-area pt-120 pb-90 ">
     <div class="container">
         <div class="row">
@@ -215,16 +216,16 @@
                     <ul class="ltn__list-item-half clearfix">
                         @foreach (var about in Model.Abouts)
                         {
-                        <li>
-                            @Html.Raw(about.Icon)
-                            @about.Title
-                        </li>
+                            <li>
+                                @Html.Raw(about.Icon)
+                                @about.Title
+                            </li>
 
                         }
                     </ul>
                     <div class="ltn__callout bg-overlay-theme-05  mt-30">
                         <p>
-                           @setting.AboutDesc
+                            @setting.AboutDesc
                         </p>
                     </div>
                     <div class="btn-wrapper animated">
@@ -235,6 +236,7 @@
         </div>
     </div>
 </div>
+<!-- ABOUT US AREA END -->
 <!-- ABOUT US AREA END -->
 <!-- COUNTER UP AREA START -->
 <div class="ltn__counterup-area section-bg-1 pt-120 pb-70">

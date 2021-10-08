@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace Back_End.ViewModels
 {
-    public class HomeViewModel
+    public class ServiceViewModel
     {
-        public List<Slider> Sliders { get; set; }
-
         public List<About> Abouts { get; set; }
 
         public List<Service> Services { get; set; }
-
-
     }
 }
