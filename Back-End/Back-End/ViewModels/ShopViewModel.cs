@@ -9,5 +9,9 @@ namespace Back_End.ViewModels
     public class ShopViewModel
     {
         public List<Product> Products { get; set; }
+        public List<Category> Categories { get; set; }
+
+        public List<Status> Statuses { get; set; }
+
     }
 }

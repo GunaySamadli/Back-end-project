@@ -23,7 +23,9 @@ namespace Back_End.Controllers
             ShopViewModel shopVM = new ShopViewModel
             {
                 Products = _context.Products.Include(x => x.ProductImages).
-                Include(x => x.Status).Include(x => x.City).Include(x => x.Team).ToList()
+                Include(x => x.Status).Include(x => x.City).Include(x => x.Team).ToList(),
+                Statuses = _context.Statuses.ToList(),
+                Categories = _context.Categories.ToList(),
             };
             return View(shopVM);
         }
