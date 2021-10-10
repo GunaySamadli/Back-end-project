@@ -50,5 +50,6 @@ namespace Back_End.Model
         public List<ProductImage> ProductImages { get; set; }
 
 
+
     }
 }

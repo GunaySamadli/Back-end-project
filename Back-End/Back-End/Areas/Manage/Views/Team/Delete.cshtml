@@ -1,0 +1,19 @@
+﻿@model Team
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="container-fluid">
+    <h1>Delete</h1>
+    <div class="card" style="width: 18rem;">
+        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">FullName: @Model.Name</li>
+        </ul>
+        <div class="card-body">
+            <a asp-action="index" class="card-link">Back</a>
+            <a asp-action="deleteteam" asp-route-id="@Model.Id" class="card-link">Delete</a>
+        </div>
+    </div>
+</div>

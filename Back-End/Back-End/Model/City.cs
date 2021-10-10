@@ -12,5 +12,7 @@ namespace Back_End.Model
         [Required]
         [StringLength(maximumLength: 20)]
         public string Name { get; set; }
+        public List<Product> Products { get; set; }
+
     }
 }

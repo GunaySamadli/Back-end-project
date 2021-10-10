@@ -388,7 +388,6 @@ namespace Back_End.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
@@ -413,25 +412,25 @@ namespace Back_End.Migrations
             modelBuilder.Entity("Back_End.Model.Product", b =>
                 {
                     b.HasOne("Back_End.Model.Category", "Category")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Back_End.Model.City", "City")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Back_End.Model.Status", "Status")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Back_End.Model.Team", "Team")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

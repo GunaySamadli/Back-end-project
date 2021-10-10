@@ -1,0 +1,45 @@
+﻿@model List<Team>
+@{
+    ViewData["Title"] = "Index";
+    int order = 0;
+}
+
+
+<div class="container-fluid" style="margin-top:100px">
+    <div class="justify-content-between d-flex align-items-center">
+        <h1>Teams</h1>
+        <a asp-action="create" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Image</th>
+                <th scope="col">ProductCount</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var team in Model)
+            {
+                order++;
+                <tr>
+                    <th scope="row">@order</th>
+                    <td>@team.Name</td>
+
+                    <td><img src="~/uploads/team/@team.Image" style="max-width:100px" /></td>
+
+                    <td>@team.Products.Count()</td>
+                    <td>
+                        <a asp-action="edit" asp-route-id="@team.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="deleteteam" asp-route-id="@team.Id" class="btn btn-danger btn-item-delete">Delete</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+          

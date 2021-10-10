@@ -296,3 +296,11 @@ C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TabProduct.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_FavPartial.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\_ViewImports.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\_ViewStart.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Team\Index.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Team\Create.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Team\Delete.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Team\Edit.cshtml.g.cs

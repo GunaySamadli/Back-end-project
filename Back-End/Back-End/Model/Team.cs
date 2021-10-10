@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,8 +12,11 @@ namespace Back_End.Model
     {
         public int Id { get; set; }
         [StringLength(maximumLength: 100)]
-        [Required]
         public string Image { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+
         [StringLength(maximumLength: 100)]
         [Required]
         public string Name { get; set; }
@@ -24,6 +29,7 @@ namespace Back_End.Model
 
         public string LinkedinIcon { get; set; }
 
+        public List<Product> Products { get; set; }
 
 
 
