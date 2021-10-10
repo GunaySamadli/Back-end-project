@@ -49,10 +49,7 @@ namespace Back_End.Controllers
                 };
                 products.Add(favItem);
             }
-            else
-            {
-                favItem.Count++;
-            }
+           
             ProductStr = JsonConvert.SerializeObject(products);
             HttpContext.Response.Cookies.Append("Product", ProductStr);
 
@@ -85,10 +82,7 @@ namespace Back_End.Controllers
 
                 products.Remove(favItem);
             }
-            else
-            {
-                favItem.Count--;
-            }
+           
             ProductStr = JsonConvert.SerializeObject(products);
             HttpContext.Response.Cookies.Append("Product", ProductStr);
 
