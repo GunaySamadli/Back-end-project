@@ -21,9 +21,14 @@ namespace Back_End.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            List<Team> teams = _context.Teams.Include(x=>x.Products).ToList();
+
+            List<Team> teams = _context.Teams.Include(x=>x.Products).Skip((page - 1) * 4).Take(4).ToList();
+
+            ViewBag.TotalPage = Math.Ceiling(_context.Teams.Count() / 4m);
+            ViewBag.SelectedPage = page;
+
             return View(teams);
         }
 

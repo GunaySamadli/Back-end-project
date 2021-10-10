@@ -1,7 +1,10 @@
 ﻿@model List<Team>
 @{
     ViewData["Title"] = "Index";
-    int order = 0;
+    int order = (ViewBag.SelectedPage - 1) * 4;
+    int selectedPage = ViewBag.SelectedPage;
+    decimal totalPage = ViewBag.TotalPage;
+
 }
 
 
@@ -41,5 +44,42 @@
 
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (selectedPage > 1)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage - 1)" aria-label="Previous">
+                            <span style="outline: none; background: none; font-size: 22px; color: #89229b " aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                }
+                @{
+                    int startPage = (selectedPage == 1 || totalPage <= 3) ? 1 : selectedPage < totalPage ? selectedPage - 1 : selectedPage - 2;
+                    int endPage = totalPage > 2 ? startPage + 2 : (int)totalPage;
+                }
+
+                @for (int i = startPage; i <= endPage; i++)
+                {
+                    <li style="padding: 10px; background-color: #ff9800; border: 1px solid #89229b;margin-right:5px;border-radius:10px" class="@(i==selectedPage?"active":"")"><a asp-action="index" asp-route-page="@i" asp-route-genreId="@ViewBag.GenreId" class="page-item">@i</a></li>
+                }
+                @if (selectedPage < totalPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)" aria-label="Next">
+                            <span style="outline: none; background: none; font-size: 22px; color: #89229b " aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                }
+
+
+            </ul>
+        </nav>
+    </div>
 </div>
-          
+
+
+
