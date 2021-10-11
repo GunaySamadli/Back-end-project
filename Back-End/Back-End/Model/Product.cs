@@ -34,6 +34,9 @@ namespace Back_End.Model
         public double HomeArea { get; set; }
         [Required]
         public int Rate { get; set; }
+        [StringLength(maximumLength:50)]
+        public string Location { get; set; }
+
         [Required]
         public int ParkingCount { get; set; }
         [Required]

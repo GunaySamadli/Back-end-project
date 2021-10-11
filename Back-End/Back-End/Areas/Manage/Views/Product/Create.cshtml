@@ -71,11 +71,17 @@
         <div class="form-row" style="margin-top:50px">
             <div class="form-group col-md-6">
                 <div class="form-check">
-                    <input style="margin-left:0" asp-for="WhichFloor" >
+                    <input style="margin-left:0" asp-for="WhichFloor">
                     <label asp-for="WhichFloor" class="form-check-label">WhichFloor</label>
                     <span class="text-danger" asp-validation-for="WhichFloor"></span>
                 </div>
             </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Location">Location</label>
+                <input asp-for="Location" class="form-control">
+                <span class="text-danger" asp-validation-for="Location"></span>
+            </div>
+          
         </div>
         <div class="form-row" style="margin-top:50px">
             <div class="form-group col-md-6" >

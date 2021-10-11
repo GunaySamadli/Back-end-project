@@ -293,6 +293,7 @@ namespace Back_End.Areas.Manage.Controllers
             existProudct.SalePrice = product.SalePrice;
             existProudct.Desc = product.Desc;
             existProudct.Rate = product.Rate;
+            existProudct.Location = product.Location;
             existProudct.IsFeatured = product.IsFeatured;
 
             _context.SaveChanges();

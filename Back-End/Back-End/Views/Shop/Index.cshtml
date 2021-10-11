@@ -87,7 +87,7 @@
                                             <div class="col-xl-6 col-sm-6 col-12">
                                                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                                     <div class="product-img">
-                                                        <a href="product-details.html"><img src="~/uploads/product/@product.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="#"></a>
+                                                        <a asp-action="detail" asp-controller="product" asp-route-id="@product.Id"><img src="~/uploads/product/@product.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="#"></a>
                                                         <div class="real-estate-agent">
                                                             <div class="agent-img">
                                                                 <a href="team-details.html"><img src="~/uploads/team/@product.Team.Image" alt="#"></a>
