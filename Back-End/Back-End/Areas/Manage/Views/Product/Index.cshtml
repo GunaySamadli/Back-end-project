@@ -1,0 +1,93 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    int order = (ViewBag.SelectedPage - 1) * 4;
+    int selectedPage = ViewBag.SelectedPage;
+    decimal totalPage = ViewBag.TotalPage;
+
+}
+
+
+<div class="container-fluid" style="margin-top:100px">
+    <div class="justify-content-between d-flex align-items-center">
+        <h1>Teams</h1>
+        <a asp-action="create" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">SalePrice</th>
+                <th scope="col">Category</th>
+                <th scope="col">Team</th>
+                <th scope="col">Status</th>
+                <th scope="col">City</th>
+                <th scope="col">CreatAt</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                order++;
+            <tr>
+                <th scope="row">@order</th>
+                <td>@product.Name</td>
+                <td>@product.SalePrice</td>
+                <td>@product.Category.Name</td>
+                <td>@product.Team.Name</td>
+                <td>@product.Status.Name</td>
+                <td>@product.City.Name</td>
+                <td>@product.CreatedAt</td>
+                <td><img src="~/uploads/product/@product.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" style="max-width:100px" /></td>
+
+                <td>
+                    <a asp-action="edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="deletefetch" asp-route-id="@product.Id" class="btn btn-danger btn-item-delete">Delete</a>
+                </td>
+
+            </tr>
+            }
+
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (selectedPage > 1)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage - 1)" aria-label="Previous">
+                            <span style="outline: none; background: none; font-size: 22px; color: #89229b " aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                }
+                @{
+                    int startPage = (selectedPage == 1 || totalPage <= 3) ? 1 : selectedPage < totalPage ? selectedPage - 1 : selectedPage - 2;
+                    int endPage = totalPage > 2 ? startPage + 2 : (int)totalPage;
+                }
+
+                @for (int i = startPage; i <= endPage; i++)
+                {
+                    <li style="padding: 10px; background-color: #ff9800; border: 1px solid #89229b;margin-right:5px;border-radius:10px" class="@(i==selectedPage?"active":"")"><a asp-action="index" asp-route-page="@i" asp-route-genreId="@ViewBag.GenreId" class="page-item">@i</a></li>
+                }
+                @if (selectedPage < totalPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)" aria-label="Next">
+                            <span style="outline: none; background: none; font-size: 22px; color: #89229b " aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                }
+
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+

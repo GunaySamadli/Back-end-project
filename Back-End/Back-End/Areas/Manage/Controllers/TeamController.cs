@@ -162,41 +162,24 @@ namespace Back_End.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
-        public IActionResult Delete(int id)
-        {
-            return RedirectToAction("index");
-        }
 
-
-        public IActionResult DeleteTeam(int id)
+        public IActionResult DeleteFetch(int id)
         {
             Team team = _context.Teams.FirstOrDefault(x => x.Id == id);
 
-            if (team == null) return NotFound();
+            if (team == null) return Json(new { status = 404 });
 
-            _context.Teams.Remove(team);
-            _context.SaveChanges();
+            try
+            {
+                _context.Teams.Remove(team);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return Json(new { status = 500 });
+            }
 
-            return RedirectToAction("index");
+            return Json(new { status = 200 });
         }
-
-        //public IActionResult DeleteFetch(int id)
-        //{
-        //    Team team = _context.Teams.FirstOrDefault(x => x.Id == id);
-
-        //    if (team == null) return Json(new { status = 404 });
-
-        //    try
-        //    {
-        //        _context.Teams.Remove(team);
-        //        _context.SaveChanges();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return Json(new { status = 500 });
-        //    }
-
-        //    return Json(new { status = 200 });
-        //}
     }
 }

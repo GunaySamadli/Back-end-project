@@ -1,0 +1,119 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid">
+    <h1>Edit</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control">
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Desc">Desc</label>
+                <input asp-for="Desc" class="form-control">
+                <span class="text-danger" asp-validation-for="Desc"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="StatusId">Team</label>
+                <select asp-for="StatusId" class="form-control" id="StatusId" asp-items="@(new SelectList(ViewBag.Status,"Id","Name"))">
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="TeamId">Team</label>
+                <select asp-for="TeamId" class="form-control" id="TeamId" asp-items="@(new SelectList(ViewBag.Teams,"Id","Name"))">
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="CategoryId">Category</label>
+                <select asp-for="CategoryId" class="form-control" id="CategoryId" asp-items="@(new SelectList(ViewBag.Category,"Id","Name"))">
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="TagIds">Tags</label>
+                <select style="padding-top: 16px" asp-for="TagIds" class="form-control" id="TagIds" asp-items="@(new SelectList(ViewBag.Tags,"Id","Name"))">
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="CityId">City</label>
+                <select asp-for="CityId" class="form-control" id="CityId" asp-items="@(new SelectList(ViewBag.City,"Id","Name"))">
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Rooms">Rooms</label>
+                <input asp-for="Rooms" class="form-control">
+                <span class="text-danger" asp-validation-for="Rooms"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="SalePrice">SalePrice</label>
+                <input asp-for="SalePrice" class="form-control">
+                <span class="text-danger" asp-validation-for="SalePrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Beds">Beds</label>
+                <input asp-for="Beds" class="form-control">
+                <span class="text-danger" asp-validation-for="Beds"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Baths">Baths</label>
+                <input asp-for="Baths" class="form-control">
+                <span class="text-danger" asp-validation-for="Baths"></span>
+            </div>
+        </div>
+        <div class="form-row" style="margin-top:50px">
+            <div class="form-group col-md-6">
+                <div class="form-check">
+                    <input style="margin-left:0" asp-for="WhichFloor">
+                    <label asp-for="WhichFloor" class="form-check-label">WhichFloor</label>
+                    <span class="text-danger" asp-validation-for="WhichFloor"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="margin-top:50px">
+            <div class="form-group col-md-6">
+                <input style="margin-left:0" asp-for="HouseFloor">
+                <label asp-for="HouseFloor" class="form-check-label">HouseFloor</label>
+                <span class="text-danger" asp-validation-for="HouseFloor"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <input asp-for="IsFeatured" class="form-check-input">
+                <label asp-for="IsFeatured" class="form-check-label">IsFeatured</label>
+                <span class="text-danger" asp-validation-for="IsFeatured"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4" style="margin: 0!important">
+                <label asp-for="PosterFile">PosterFile</label>
+                <input style="position: static; opacity: 1;" asp-for="PosterFile" class="form-control">
+                <span class="text-danger" asp-validation-for="PosterFile"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="CreatedAt">CreatedAt</label>
+                <input asp-for="CreatedAt" class="form-control">
+                <span class="text-danger" asp-validation-for="CreatedAt"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4" style="margin: 0!important">
+                <label asp-for="ImageFiles">ImageFiles</label>
+                <input style="position: static; opacity: 1;" asp-for="ImageFiles" class="form-control">
+                <span class="text-danger" asp-validation-for="ImageFiles"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+
+    </form>
+</div>
+
+

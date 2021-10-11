@@ -144,5 +144,25 @@ namespace Back_End.Areas.Manage.Controllers
             _context.SaveChanges();
             return RedirectToAction("index");
         }
+
+
+        public IActionResult DeleteFetch(int id)
+        {
+            Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (slider == null) return Json(new { status = 404 });
+
+            try
+            {
+                _context.Sliders.Remove(slider);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return Json(new { status = 500 });
+            }
+
+            return Json(new { status = 200 });
+        }
     }
 }

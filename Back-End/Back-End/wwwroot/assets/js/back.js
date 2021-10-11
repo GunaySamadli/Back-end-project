@@ -15,6 +15,8 @@ $(document).ready(function () {
 
 
                 $("#ltn__utilize-cart-menu").html(data)
+                var count = $("#favorite").data("favorite-count")
+                $("#favorite-count").text(count)
             });
     });
 
@@ -28,6 +30,8 @@ $(document).ready(function () {
             .then(data => {
 
                 $("#ltn__utilize-cart-menu").html(data)
+                var count = $("#favorite").data("favorite-count")
+                $("#favorite-count").text(count)
             });
     })
 

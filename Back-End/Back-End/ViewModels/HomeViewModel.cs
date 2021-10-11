@@ -18,6 +18,8 @@ namespace Back_End.ViewModels
         public List<City> Cities { get; set; }
         public List<Category> Categories { get; set; }
         public List<Product> FeaturedProduct{ get; set; }
+        public List<ProductTag> ProductTags { get; set; }
+
 
     }
 }
