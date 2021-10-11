@@ -1,0 +1,94 @@
+﻿
+@model Product
+
+<div class="row">
+    <div class="col-lg-6 col-12">
+        <div class="modal-product-img">
+            <img src="~/uploads/product/@Model.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="#">
+        </div>
+    </div>
+    <div class="col-lg-6 col-12">
+        <div class="modal-product-info">
+            <div class="product-ratting">
+                <ul>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        if (i <= Model.Rate)
+                        {
+                            <li><a href="#"><i class="fas fa-star star-on"></i></a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+
+                        }
+                    }
+                </ul>
+            </div>
+            <h3><a href="product-details.html">@Model.Rooms Rooms @Model.City.Name</a></h3>
+            <div class="product-price">
+                <span>$@Model.SalePrice</span>
+            </div>
+            <hr>
+            <div class="modal-product-brief">
+                <p>@Model.Desc</p>
+            </div>
+            <div class="modal-product-meta ltn__product-details-menu-1 d-none">
+                <ul>
+                    <li>
+                        <strong>Categories:</strong>
+                        <span>
+                            <a href="#">@Model.Category.Name</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="ltn__product-details-menu-2 d-none">
+                <ul>
+                    <li>
+                        <div class="cart-plus-minus">
+                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>ADD TO CART</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <hr> -->
+            <div class="ltn__product-details-menu-3">
+                <ul>
+                    <li>
+                        <a href="#" class="" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                            <i class="far fa-heart"></i>
+                            <span>Add to Wishlist</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="" title="Compare" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Compare</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="ltn__social-media">
+                <ul>
+                    Tags:
+                    @for (int i = 0; i < Model.ProductTags.Count; i++)
+                    {
+                        <a href="#">@Model.ProductTags[i].Tag.Name</a>
+                        @(i!=Model.ProductTags.Count-1?",":"")
+                    }
+
+                </ul>
+            </div>
+            <label class="float-end mb-0"><a class="text-decoration" href="product-details.html"><small>View Details</small></a></label>
+        </div>
+    </div>
+</div>

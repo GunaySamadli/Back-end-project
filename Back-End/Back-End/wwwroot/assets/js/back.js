@@ -38,7 +38,25 @@ $(document).ready(function () {
             });
     })
 
-   
+    $(document).on("click", ".show-product-modal", function (e) {
+        e.preventDefault();
+
+        var id = $(this).attr("data-id");
+
+
+        fetch('https://localhost:44386/home/getproduct/' + id)
+            .then(response => response.text())
+            .then(data => {
+
+
+                $(".modal-product-item").html(data)
+            });
+        // get data from controller
+
+        //set data 
+
+        $("#quick_view_modal").modal("show")
+    });
 
    
 })
