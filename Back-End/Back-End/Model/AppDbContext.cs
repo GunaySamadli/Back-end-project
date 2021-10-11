@@ -30,7 +30,7 @@ namespace Back_End.Model
 
         public DbSet<ProductTag> ProductTags { get; set; }
 
-
+        public DbSet<Contact> Contacts { get; set; }
 
     }
 }

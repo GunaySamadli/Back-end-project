@@ -96,6 +96,8 @@ namespace Back_End.Controllers
                Include(x => x.City).Include(x => x.Status)
                .Include(x => x.ProductTags).ThenInclude(x=>x.Tag).FirstOrDefault(x => x.Id == id);
 
+            ViewBag.Categories = _context.Categories.Include(x=>x.Products).ToList();
+
             return View(product);
         }
     }

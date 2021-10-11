@@ -3,6 +3,7 @@
 
 @{
     Setting setting = service.GetSetting();
+    List<FavItemViewModel> favs = ViewBag.Favorites;
 }
 
 <!-- SLIDER AREA START (slider-3) -->
@@ -492,9 +493,19 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="add-fav" asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" data-id="@product.Id" >
-                                            <i class="flaticon-heart-1"></i>
-                                        </a>
+                                        @if (!favs.Any(f => f.ProductId == product.Id))
+                                        {
+                                            <a class="add-fav" data-id="@product.Id"  asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist"  style="background-color:none">
+                                                <i class="flaticon-heart-1 "></i>
+                                            </a>
+                                        }
+                else
+                {
+                                    <a class="delete" data-id="@product.Id" asp-action="deletefromfav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist"  style="background-color: #FF5A3C">
+                                        <i class="flaticon-heart-1" ></i>
+                                    </a>
+                }
+
                                     </li>
                                     <li>
                                         <a href="product-details.html" title="Product Details">

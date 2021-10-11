@@ -4,6 +4,7 @@ using Back_End.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,10 @@ namespace Back_End.Controllers
 
         public IActionResult Index()
         {
-            HomeViewModel homeVM = new HomeViewModel
+            string strPr=HttpContext.Request.Cookies["Product"];
+            ViewBag.Favorites = JsonConvert.DeserializeObject<List<FavItemViewModel>>(strPr);
+
+           HomeViewModel homeVM = new HomeViewModel
             {
                 Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList(),
                 Abouts = _context.Abouts.ToList(),

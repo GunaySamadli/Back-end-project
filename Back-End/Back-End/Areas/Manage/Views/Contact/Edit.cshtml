@@ -1,0 +1,37 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+<div class="container-fluid" style="margin-top:50px">
+    <h1>Edit</h1>
+    <form method="post" enctype="multipart/form-data" style="margin-top:100px">
+        <div class="form-group">
+            <label asp-for="Icon">Icon</label>
+            <input asp-for="Icon" class="form-control">
+            <span class="text-danger" asp-validation-for="Icon"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" class="form-control">
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Desc1">Desc1</label>
+            <input asp-for="Desc1" class="form-control">
+            <span class="text-danger" asp-validation-for="Desc1"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Desc2">Desc2</label>
+            <input asp-for="Desc2" class="form-control">
+            <span class="text-danger" asp-validation-for="Desc2"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+
+    </form>
+</div>

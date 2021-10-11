@@ -17,12 +17,13 @@ $(document).ready(function () {
                 $("#ltn__utilize-cart-menu").html(data)
                 var count = $("#favorite").data("favorite-count")
                 $("#favorite-count").text(count)
+                $(this).css('background', '#FF5A3C')   
+
             });
     });
 
     $(document).on("click", ".delete", function (e) {
         e.preventDefault();
-
         var id = $(this).attr("data-id");
 
         fetch('https://localhost:44386/product/deletefromfav/' + id)
@@ -32,6 +33,8 @@ $(document).ready(function () {
                 $("#ltn__utilize-cart-menu").html(data)
                 var count = $("#favorite").data("favorite-count")
                 $("#favorite-count").text(count)
+                $(this).css('background', 'none')
+
             });
     })
 
