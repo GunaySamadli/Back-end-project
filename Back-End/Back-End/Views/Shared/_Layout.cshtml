@@ -1,6 +1,6 @@
 ﻿@inject LayoutService service
 
-@{ 
+@{
     Setting setting = service.GetSetting();
     List<FavItemViewModel> favItems = service.GetFavItems();
     double totalCount = 0;
@@ -171,13 +171,24 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            <li><a href="login.html">Sign in</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="account.html">My Account</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a href="login.html">@User.Identity.Name</a></li>
+                                                <li><a href="login.html">Logout</a></li>
+
+                                            }
+                                            else
+                                            {
+                                                <li><a href="login.html">Login</a></li>
+                                                <li><a asp-action="register" asp-controller="account">Register</a></li>
+                                                <li><a href="account.html">My Account</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                            }
+
                                         </ul>
                                     </li>
                                 </ul>
+
                             </div>
                             <!-- mini-cart -->
                             <div class="mini-cart-icon">

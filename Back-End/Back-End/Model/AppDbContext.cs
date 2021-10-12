@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Back_End.Model
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -31,6 +32,8 @@ namespace Back_End.Model
         public DbSet<ProductTag> ProductTags { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+
 
     }
 }
