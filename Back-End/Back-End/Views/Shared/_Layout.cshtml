@@ -1,10 +1,13 @@
 ﻿@inject LayoutService service
+@inject UserManager<AppUser> userManager
 
 @{
     Setting setting = service.GetSetting();
     List<FavItemViewModel> favItems = service.GetFavItems();
     double totalCount = 0;
     totalCount = favItems.Sum(x => x.Price * x.Count);
+    AppUser member = User.Identity.IsAuthenticated ? userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin) : null;
+
 }
 
 <!doctype html>
@@ -148,6 +151,9 @@
                             </div>
                         </div>
                         <div class="col ltn__header-options ltn__header-options-2 mb-sm-20">
+
+
+
                             <!-- header-search-1 -->
                             <div class="header-search-wrap">
                                 <div class="header-search-1">
@@ -171,24 +177,25 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            @if (User.Identity.IsAuthenticated)
+                                            @if (member != null)
                                             {
-                                                <li><a href="login.html">@User.Identity.Name</a></li>
-                                                <li><a href="login.html">Logout</a></li>
+                                                <li><a>@member.FullName</a></li>
+                                                <li><a asp-action="Logout" asp-controller="account">Logout</a></li>
+
 
                                             }
                                             else
                                             {
-                                                <li><a href="login.html">Login</a></li>
-                                                <li><a asp-action="register" asp-controller="account">Register</a></li>
+
+                                                <li><a asp-action="Login" asp-controller="account">Login</a></li>
+                                                <li><a asp-action="Register" asp-controller="account">Register</a></li>
                                                 <li><a href="account.html">My Account</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
+
                                             }
 
                                         </ul>
                                     </li>
                                 </ul>
-
                             </div>
                             <!-- mini-cart -->
                             <div class="mini-cart-icon">

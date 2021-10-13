@@ -75,6 +75,42 @@ namespace Back_End.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(MemberLoginViewModel loginVM)
+        {
+            if (!ModelState.IsValid) return View();
+
+            AppUser member = _userManager.Users.FirstOrDefault(x => x.UserName == loginVM.UserName && x.IsAdmin == false);
+
+            if (member == null)
+            {
+                ModelState.AddModelError("", "istifadeci maili ve ya sifre yanlisdir!");
+                return View();
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(member, loginVM.Password, true, false);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "istifadeci maili ve ya sifre yanlisdir!");
+                return View();
+            }
+
+
+            return RedirectToAction("index", "home");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
+
+
+            //return Response.Redirect(Request.UrlReferrer.ToString());
+
+        }
+
 
     }
 }

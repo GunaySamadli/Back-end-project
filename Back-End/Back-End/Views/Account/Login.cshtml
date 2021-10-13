@@ -1,4 +1,4 @@
-﻿
+﻿@model MemberLoginViewModel
 @{
     ViewData["Title"] = "Login";
 }
@@ -39,15 +39,16 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="account-login-inner">
-                            <form action="#" class="ltn__form-box contact-form-box">
-                                <input type="text" name="email" placeholder="Email*">
-                                <input type="password" name="password" placeholder="Password*">
+                            <form method="post" class="ltn__form-box contact-form-box">
+                                <input asp-for="UserName" placeholder="UserName">
+                                <span class="text-danger" asp-validation-for="UserName"></span>
+                                <input asp-for="Password" placeholder="Password*">
+                                <span class="text-danger" asp-validation-for="Password"></span>
+
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                 <div class="btn-wrapper mt-0">
-                                    <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
-                                </div>
-                                <div class="go-to-btn mt-20">
-                                    <a href="#"><small>FORGOTTEN YOUR PASSWORD?</small></a>
-                                </div>
+                                    <button class="theme-btn-1 btn btn-block" type="submit">Login</button>
+                                </div>                                
                             </form>
                         </div>
                     </div>

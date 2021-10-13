@@ -24,10 +24,17 @@ namespace Back_End.Controllers
 
         public IActionResult Index()
         {
+            
             string strPr=HttpContext.Request.Cookies["Product"];
-            ViewBag.Favorites = JsonConvert.DeserializeObject<List<FavItemViewModel>>(strPr);
+            ViewBag.Favorites = null;
+            if (strPr!=null)
+            {
+                ViewBag.Favorites = JsonConvert.DeserializeObject<List<FavItemViewModel>>(strPr);
 
-           HomeViewModel homeVM = new HomeViewModel
+            }
+
+
+            HomeViewModel homeVM = new HomeViewModel
             {
                 Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList(),
                 Abouts = _context.Abouts.ToList(),

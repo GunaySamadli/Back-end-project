@@ -33,6 +33,8 @@ namespace Back_End.Model
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<FavItems> FavItems { get; set; }
+
 
 
     }

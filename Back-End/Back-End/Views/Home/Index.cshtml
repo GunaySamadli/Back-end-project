@@ -425,8 +425,15 @@
                             <a asp-action="detail" asp-controller="product" asp-route-id="@product.Id"><img src="~/uploads/product/@product.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
-                                   
-                                    <li class="sale-badge bg-green">@product.Status.Name</li>
+                                    @if (product.Status.Name == "Sale")
+                                    {
+                                        <li class="sale-badge bg-green---">For Sale</li>
+
+                                    }
+                                    else
+                                    {
+                                        <li class="sale-badge bg-green">For Rent</li>
+                                    }
                                 </ul>
                             </div>
                             <div class="product-img-location-gallery">
@@ -493,18 +500,27 @@
                                         </a>
                                     </li>
                                     <li>
-                                        @if (!favs.Any(f => f.ProductId == product.Id))
+                                        @if (favs != null)
                                         {
-                                            <a class="add-fav" data-id="@product.Id"  asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist"  style="background-color:none">
+                                            @if (!favs.Any(f => f.ProductId == product.Id))
+                                            {
+                                                <a class="add-fav fav" data-id="@product.Id" asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color:none">
+                                                    <i class="flaticon-heart-1 "></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="delete fav" data-id="@product.Id" asp-action="deletefromfav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color: #FF5A3C">
+                                                    <i class="flaticon-heart-1"></i>
+                                                </a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a class="add-fav fav" data-id="@product.Id" asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color:none">
                                                 <i class="flaticon-heart-1 "></i>
                                             </a>
                                         }
-                else
-                {
-                                    <a class="delete" data-id="@product.Id" asp-action="deletefromfav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist"  style="background-color: #FF5A3C">
-                                        <i class="flaticon-heart-1" ></i>
-                                    </a>
-                }
 
                                     </li>
                                     <li>

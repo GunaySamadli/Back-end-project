@@ -12,7 +12,7 @@ $(document).ready(function () {
         fetch('https://localhost:44386/product/addtofav/' + id)
             .then(response => response.text())
             .then(data => {
-
+                $(this).removeClass('add-fav').addClass('delete');
 
                 $("#ltn__utilize-cart-menu").html(data)
                 var count = $("#favorite").data("favorite-count")
@@ -30,10 +30,16 @@ $(document).ready(function () {
             .then(response => response.text())
             .then(data => {
 
+                $('.fav').each(function () {
+                    if ($(this).attr('data-id') == id) {
+                        $(this).removeClass('delete').addClass('add-fav');
+                        $(this).css('background', 'none');
+                    }
+                })
+
                 $("#ltn__utilize-cart-menu").html(data)
                 var count = $("#favorite").data("favorite-count")
                 $("#favorite-count").text(count)
-                $(this).css('background', 'none')
 
             });
     })

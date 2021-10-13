@@ -1,5 +1,6 @@
 ﻿using Back_End.Helpers;
 using Back_End.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 namespace Back_End.Areas.Manage.Controllers
 {
     [Area("manage")]
+    //[Authorize(Roles = "Admin,SuperAdmin")]
+
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -23,13 +26,21 @@ namespace Back_End.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, string search = null)
         {
 
+            ViewBag.CurrentSearch = search;
+            var query = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(x => x.Name.Contains(search));
+            }
             List<Product> products = _context.Products.Include(x => x.Category).Include(x => x.City).Include(x => x.Team).Include(x => x.Status).Include(x => x.ProductImages).Skip((page - 1) * 4).Take(4).ToList();
 
-            ViewBag.TotalPage = Math.Ceiling(_context.Products.Count() / 4m);
+            ViewBag.TotalPage = Math.Ceiling(query.Count() / 4m);
             ViewBag.SelectedPage = page;
+
 
             return View(products);
         }
@@ -239,7 +250,7 @@ namespace Back_End.Areas.Manage.Controllers
                 }
                 else
                 {
-                    FileManager.Delete(_env.WebRootPath, "uploads/book", poster.Image);
+                    FileManager.Delete(_env.WebRootPath, "uploads/product", poster.Image);
                     poster.Image = NewFileName;
 
                 }

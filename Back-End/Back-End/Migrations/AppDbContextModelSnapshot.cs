@@ -104,6 +104,31 @@ namespace Back_End.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("Back_End.Model.FavItems", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("FavItems");
+                });
+
             modelBuilder.Entity("Back_End.Model.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -678,6 +703,19 @@ namespace Back_End.Migrations
                         .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("AppUser");
+                });
+
+            modelBuilder.Entity("Back_End.Model.FavItems", b =>
+                {
+                    b.HasOne("Back_End.Model.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Back_End.Model.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Back_End.Model.Product", b =>

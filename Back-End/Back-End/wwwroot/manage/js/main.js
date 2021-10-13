@@ -42,5 +42,5 @@
     $(document).on("click", ".remove-img-box", function () {
         console.log("salam")
         $(this).parent().remove()
-    })
+    });
 })
