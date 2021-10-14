@@ -21,6 +21,7 @@ namespace Back_End.ViewModels
         public List<ProductTag> ProductTags { get; set; }
         public List<Setting> Settings { get; set; }
 
+        public Order LastProduct { get; set; }
 
 
 

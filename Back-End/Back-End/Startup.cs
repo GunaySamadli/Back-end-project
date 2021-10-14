@@ -40,6 +40,7 @@ namespace Back_End
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<LayoutService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddHttpContextAccessor();
 
         }

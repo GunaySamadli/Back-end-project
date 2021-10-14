@@ -1,4 +1,5 @@
-﻿using Back_End.Model;
+﻿using Back_End.Helpers;
+using Back_End.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -56,14 +57,8 @@ namespace Back_End.Areas.Manage.Controllers
                     ModelState.AddModelError("ImageFile", "File size can not be more than 2MB!");
                     return View();
                 }
-                string newFileName = Guid.NewGuid().ToString() + slider.ImageFile.FileName;
-                string path = Path.Combine(_env.WebRootPath, "uploads/slider", newFileName);
 
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    slider.ImageFile.CopyTo(stream);
-                }
-
+                string newFileName = FileManager.Save(_env.WebRootPath, "uploads/slider", slider.ImageFile); ;
                 slider.Image = newFileName;
             }
 
@@ -93,7 +88,6 @@ namespace Back_End.Areas.Manage.Controllers
 
             if (existSlider == null) return NotFound();
 
-            string newFileName = null;
             if (slider.ImageFile != null)
             {
                 if (slider.ImageFile.ContentType != "image/png" && slider.ImageFile.ContentType != "image/jpeg")
@@ -107,29 +101,15 @@ namespace Back_End.Areas.Manage.Controllers
                     ModelState.AddModelError("ImageFile", "File size can not be more than 2MB!");
                     return View();
                 }
-
-                newFileName = Guid.NewGuid().ToString() + slider.ImageFile.FileName;
-                string path = Path.Combine(_env.WebRootPath, "uploads/slider", newFileName);
-
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    slider.ImageFile.CopyTo(stream);
-                }
-            }
-
-            if (newFileName != null || slider.Image == null)
-            {
                 if (existSlider.Image != null)
                 {
-                    string deletePath = Path.Combine(_env.WebRootPath, "uploads/slider", existSlider.Image);
-
-                    if (System.IO.File.Exists(deletePath))
-                    {
-                        System.IO.File.Delete(deletePath);
-                    }
+                    FileManager.Delete(_env.WebRootPath, "uploads/slider", existSlider.Image);
                 }
 
+                string newFileName = FileManager.Save(_env.WebRootPath, "uploads/slider", slider.ImageFile);
                 existSlider.Image = newFileName;
+
+               
             }
 
             existSlider.Icon = slider.Icon;

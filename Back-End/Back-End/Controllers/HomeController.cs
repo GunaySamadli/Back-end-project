@@ -33,9 +33,12 @@ namespace Back_End.Controllers
 
             }
 
+            
 
             HomeViewModel homeVM = new HomeViewModel
             {
+                LastProduct=_context.Orders.Include(x=>x.Product)
+                .ThenInclude(x=>x.ProductImages).OrderByDescending(x=>x.Id).FirstOrDefault(),
                 Sliders = _context.Sliders.OrderBy(x=>x.Order).ToList(),
                 Abouts = _context.Abouts.ToList(),
                 Services = _context.Services.Take(3).ToList(),

@@ -96,19 +96,22 @@ namespace Back_End.Areas.Manage.Controllers
             return RedirectToAction("index", "dashboard");
         }
 
+
+        [Authorize("SuperAdmin")]
         public IActionResult AddAdmin()
         {
             return View();
         }
 
 
+        [Authorize("SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddAdmin(LoginViewModel loginVM)
+        public async Task<IActionResult> AddAdmin(AdminViewModel adminVm)
         {
             if (!ModelState.IsValid) return View();
 
-            AppUser admin = _userManager.Users.FirstOrDefault(x => x.UserName == loginVM.UserName && x.IsAdmin == true);
+            AppUser admin = _userManager.Users.FirstOrDefault(x => x.UserName == adminVm.UserName && x.IsAdmin == true);
 
             if (admin == null)
             {
@@ -116,13 +119,22 @@ namespace Back_End.Areas.Manage.Controllers
                 return View();
             }
 
-            var result = await _signInManager.PasswordSignInAsync(admin, loginVM.Password, loginVM.IsPersistent, true);
+            var result = await _signInManager.PasswordSignInAsync(admin, adminVm.CurrentPassword, true, true);
 
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "istifadeci adi ve ya sifre yanlisdir!");
                 return View();
             }
+
+            AdminViewModel adminVM = new AdminViewModel
+            {
+                Email = admin.Email,
+                FullName = admin.FullName,
+                UserName = admin.UserName
+            };
+
+            
 
             return RedirectToAction("index", "dashboard");
         }

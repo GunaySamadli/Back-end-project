@@ -347,3 +347,6 @@ C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Index.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Edit.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

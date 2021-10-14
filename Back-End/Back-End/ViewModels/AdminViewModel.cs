@@ -14,9 +14,6 @@ namespace Back_End.ViewModels
         [StringLength(maximumLength: 50, MinimumLength = 6)]
         public string FullName { get; set; }
 
-        [StringLength(maximumLength: 20, MinimumLength = 6)]
-        public string PhoneNumber { get; set; }
-
         [Required]
         [StringLength(maximumLength: 100, MinimumLength = 6)]
         [DataType(DataType.EmailAddress)]
