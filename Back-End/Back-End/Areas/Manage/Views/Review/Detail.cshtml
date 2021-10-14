@@ -1,0 +1,16 @@
+﻿@model Review
+@{
+    ViewData["Title"] = "Detail";
+
+}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Review</h5>
+        <p class="card-text">@Model.AppUser.UserName</p>
+        <p class="card-text">@Model.Product.Name</p>
+        <p class="card-text">@Model.Text</p>
+        <a asp-action="accept" asp-route-id="@Model.Id" class="card-link">Accepted</a>
+        <a asp-action="deletefetch" asp-route-id="@Model.Id" class="card-link">Delete</a>
+    </div>
+</div>

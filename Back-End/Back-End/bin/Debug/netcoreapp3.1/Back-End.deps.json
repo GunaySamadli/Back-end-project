@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Back-End/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.18",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.18",
           "Microsoft.EntityFrameworkCore": "3.1.18",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.18",
@@ -332,6 +333,20 @@
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.18": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.18"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "assemblyVersion": "3.1.18.0",
+            "fileVersion": "3.100.1821.36504"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -3886,6 +3901,13 @@
       "sha512": "sha512-ThXPFfGrRdsaO8+VK1B/aLrYdf9gR/Wo/D85EqJv87S8y0GzSfJDbBHO5YyoFpjK1LHcUqE2jEGeY9Kvfbo50Q==",
       "path": "microsoft.aspnetcore.cryptography.keyderivation/3.1.18",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.3.1.18.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jbcjkU7Waq30aBuwNani9E/h4LyodDvbHFLHLndt82Qzifrr25z7/r2zIwpwop1tWaqMwdcloAUSxEcs44DBuA==",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.18",
+      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.18.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",

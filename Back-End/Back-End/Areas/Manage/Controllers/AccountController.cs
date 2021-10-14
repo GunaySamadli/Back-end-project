@@ -1,5 +1,7 @@
 ﻿using Back_End.Areas.Manage.ViewModels;
 using Back_End.Model;
+using Back_End.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -72,6 +74,37 @@ namespace Back_End.Areas.Manage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
+        {
+            if (!ModelState.IsValid) return View();
+
+            AppUser admin = _userManager.Users.FirstOrDefault(x => x.UserName == loginVM.UserName && x.IsAdmin == true);
+
+            if (admin == null)
+            {
+                ModelState.AddModelError("", "istifadeci adi ve ya sifre yanlisdir!");
+                return View();
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(admin, loginVM.Password, loginVM.IsPersistent, true);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "istifadeci adi ve ya sifre yanlisdir!");
+                return View();
+            }
+
+            return RedirectToAction("index", "dashboard");
+        }
+
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddAdmin(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid) return View();
 

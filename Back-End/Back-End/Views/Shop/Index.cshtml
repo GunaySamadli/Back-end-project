@@ -1,6 +1,7 @@
 ﻿@model ShopViewModel
 @{
     ViewData["Title"] = "Index";
+    List<FavItemViewModel> favs = ViewBag.Favorites;
     int selectedPage = ViewBag.SelectedPage;
     decimal totalPage = ViewBag.TotalPage;
 }
@@ -140,9 +141,27 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
-                                                                        <i class="flaticon-heart-1"></i>
-                                                                    </a>
+                                                                    @if (favs != null)
+                                                                    {
+                                                                        @if (!favs.Any(f => f.ProductId == product.Id))
+                                                                        {
+                                                                            <a class="add-fav fav" data-id="@product.Id" asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color:none">
+                                                                                <i class="flaticon-heart-1 "></i>
+                                                                            </a>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <a class="delete fav" data-id="@product.Id" asp-action="deletefromfav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color: #FF5A3C">
+                                                                                <i class="flaticon-heart-1"></i>
+                                                                            </a>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <a class="add-fav fav" data-id="@product.Id" asp-action="addtofav" asp-controller="product" asp-route-id="@product.Id" title="Wishlist" style="background-color:none">
+                                                                            <i class="flaticon-heart-1 "></i>
+                                                                        </a>
+                                                                    }
                                                                 </li>
                                                                 <li>
                                                                     <a href="product-details.html" title="Product Details">

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "SzgOOy+qfezrDkfNyX1t7VGB7mxDDjqaX/zf2AkYi2qSqurD+EFE0S2ZviiD47GI6VbUFKVinA3kjJDnFJt/XQ==",
+  "dgSpecHash": "Zdly6zhw3YJi/YJOiYN4BY6vp+iJmualy/SOp3GiRHkoL+kIJTNmqBs9p8wP48gyyvlSCUAyx2hQlDjLDsFKGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\Back-end-project\\Back-End\\Back-End\\Back-End.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.18\\microsoft.aspnetcore.cryptography.internal.3.1.18.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.18\\microsoft.aspnetcore.cryptography.keyderivation.3.1.18.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.18\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.18.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.18\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.18.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

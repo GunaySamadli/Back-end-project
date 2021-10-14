@@ -15,7 +15,9 @@ namespace Back_End.Model
         public string Text { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
+        public bool Accept { get; set; }
         public AppUser AppUser { get; set; }
         public Product Product { get; set; }
+
     }
 }

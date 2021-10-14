@@ -36,8 +36,7 @@ namespace Back_End.Model
         public DbSet<Setting> Settings { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
-
-
+        public DbSet<Order> Orders { get; set; }
 
 
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace Back_End.Controllers
 
         public IActionResult Index(int page=1)
         {
+            string strPr = HttpContext.Request.Cookies["Product"];
+            ViewBag.Favorites = null;
+            if (strPr != null)
+            {
+                ViewBag.Favorites = JsonConvert.DeserializeObject<List<FavItemViewModel>>(strPr);
+
+            }
             ShopViewModel shopVM = new ShopViewModel
             {
                 Products = _context.Products.Include(x => x.ProductImages).
@@ -45,21 +53,21 @@ namespace Back_End.Controllers
         {
             var product = _context.Products.FirstOrDefault(x => x.Id == id);
 
-            Review newReview = new Review
-            {
-                Email = review.Email,
-                Username = review.Username,
-                Rate = 1,
-                Date = DateTime.UtcNow,
-                Text = review.Text,
-                ProductId =id,
-                AppUserId = (await _userManager.FindByNameAsync(User.Identity.Name)).Id
+                Review newReview = new Review
+                {
+                    Email = review.Email,
+                    Username = review.Username,
+                    Rate = 1,
+                    Date = DateTime.UtcNow,
+                    Text = review.Text,
+                    ProductId = id,
+                    Accept=false,
+                    AppUserId = (await _userManager.FindByNameAsync(User.Identity.Name)).Id
 
-            };
+                };
+                _context.Reviews.Add(newReview);
+                _context.SaveChanges();
 
-            
-            _context.Reviews.Add(newReview);
-            _context.SaveChanges();
 
             return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
