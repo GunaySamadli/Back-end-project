@@ -1,7 +1,12 @@
-﻿@model Product
+﻿
+@model ShopViewModel
+@inject UserManager<AppUser> userManager
+
 @{
     ViewData["Title"] = "Detail";
     List<Category> categories = ViewBag.Categories;
+    AppUser member = User.Identity.IsAuthenticated ? userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin) : null;
+
 }
 
 
@@ -29,7 +34,7 @@
 <div class="ltn__img-slider-area mb-90">
     <div class="container-fluid">
         <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
-            @foreach (var item in Model.ProductImages)
+            @foreach (var item in Model.Product.ProductImages)
             {
                 <div class="col-lg-12">
                     <div class="ltn__img-slide-item-4">
@@ -52,65 +57,65 @@
                 <div class="ltn__shop-details-inner ltn__page-details-inner mb-60">
                     <div class="ltn__blog-meta">
                         <ul>
-                            @if (Model.IsFeatured == true)
+                            @if (Model.Product.IsFeatured == true)
                             {
                                 <li class="ltn__blog-category">
                                     <a href="#">Featured</a>
                                 </li>
                             }
-                        <li class="ltn__blog-category">
-                            @if (Model.Status.Name == "Sale")
-                            {
-                                <a class="bg-orange---" href="#">For Sale</a>
+                            <li class="ltn__blog-category">
+                                @if (Model.Product.Status.Name == "Sale")
+                                {
+                                    <a class="bg-orange---" href="#">For Sale</a>
 
-                            }
-                            else
-                            {
-                                <a class="bg-orange" href="#">For Rent</a>
+                                }
+                                else
+                                {
+                                    <a class="bg-orange" href="#">For Rent</a>
 
-                            }
-                        </li>
+                                }
+                            </li>
                             <li class="ltn__blog-date">
-                                <i class="far fa-calendar-alt"></i>@Model.CreatedAt.ToString("MMMM dd,yyyy")
+                                <i class="far fa-calendar-alt"></i>@Model.Product.CreatedAt.ToString("MMMM dd,yyyy")
                             </li>
                             <li>
                                 <a href="#"><i class="far fa-comments"></i>35 Comments</a>
                             </li>
                         </ul>
                     </div>
-                    <h1>@Model.Name</h1>
-                    <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> @Model.City.Name, @Model.Location</label>
+                    <h1>@Model.Product.Name</h1>
+                    <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> @Model.Product.City.Name, @Model.Product.Location</label>
                     <h4 class="title-2">Description</h4>
                     <p>
-                        @Model.Desc
+                        @Model.Product.Desc
                     </p>
 
                     <h4 class="title-2">Property Detail</h4>
                     <div class="property-detail-info-list section-bg-1 clearfix mb-60">
                         <ul>
-                            <li><label>Product Place:</label> <span>@Model.City.Name</span></li>
-                            <li><label>Product Price: </label> <span>@Model.SalePrice ₼</span></li>
-                            <li><label>Home Area:</label> <span>@Model.HomeArea  sqft</span></li>
-                            <li><label>Rooms:</label> <span>@Model.Rooms</span></li>
-                            <li><label>Bath:</label> <span>@Model.Baths</span></li>
+                            <li><label>Product Place:</label> <span>@Model.Product.City.Name</span></li>
+                            <li><label>Product Price: </label> <span>@Model.Product.SalePrice ₼</span></li>
+                            <li><label>Home Area:</label> <span>@Model.Product.HomeArea  sqft</span></li>
+                            <li><label>Rooms:</label> <span>@Model.Product.Rooms</span></li>
+                            <li><label>Bath:</label> <span>@Model.Product.Baths</span></li>
                         </ul>
                         <ul>
-                            <li><label>Beds:</label> <span>@Model.Beds </span></li>
-                            <li><label>Floors:</label> <span>@Model.HouseFloor</span></li>
-                            @if (Model.WhichFloor > 0)
+                            <li><label>Beds:</label> <span>@Model.Product.Beds </span></li>
+                            <li><label>Floors:</label> <span>@Model.Product.HouseFloor</span></li>
+                            @if (Model.Product.WhichFloor > 0)
                             {
-                                <li><label>Floor Place:</label> <span>@Model.WhichFloor</span></li>
+                                <li><label>Floor Place:</label> <span>@Model.Product.WhichFloor</span></li>
 
                             }
-                            <li><label>CreatAt:</label> <span>@Model.CreatedAt.ToString("MMMM dd,yyyy")</span></li>
-                            <li><label>Sale Status:</label> <span>@Model.Status.Name</span></li>
+                            <li><label>CreatAt:</label> <span>@Model.Product.CreatedAt.ToString("MMMM dd,yyyy")</span></li>
+                            <li><label>Sale Status:</label> <span>@Model.Product.Status.Name</span></li>
                         </ul>
                     </div>
 
                     <h4 class="title-2">Aminities</h4>
                     <div class="property-detail-feature-list clearfix mb-45">
                         <ul>
-                            @foreach (var item in Model.ProductTags)
+                            @foreach (var item in Model.Product.ProductTags)
                             {
                                 <li>
                                     <div class="property-detail-feature-list-item">
@@ -125,18 +130,18 @@
                         </ul>
                     </div>
 
-                    
 
-                    
+
+
 
                     <h4 class="title-2">Location</h4>
                     <div class="property-details-google-map mb-60">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
 
-                   
 
-                    
+
+
 
                     <div class="ltn__shop-details-tab-content-inner--- ltn__shop-details-tab-inner-2 ltn__product-details-review-inner mb-60">
                         <h4 class="title-2">Customer Reviews</h4>
@@ -155,75 +160,36 @@
                         <div class="ltn__comment-area mb-30">
                             <div class="ltn__comment-inner">
                                 <ul>
-                                    <li>
-                                        <div class="ltn__comment-item clearfix">
-                                            <div class="ltn__commenter-img">
-                                                <img src="img/testimonial/1.jpg" alt="Image">
-                                            </div>
-                                            <div class="ltn__commenter-comment">
-                                                <h6><a href="#">Adam Smit</a></h6>
-                                                <div class="product-ratting">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                    </ul>
+                                    @foreach (var review in Model.Reviews)
+                                    {
+                                        <li>
+                                            <div class="ltn__comment-item clearfix">
+                                                <div class="ltn__commenter-img">
+                                                    <img src="~/uploads/member/user.png" alt="Image">
                                                 </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                <span class="ltn__comment-reply-btn">September 3, 2020</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ltn__comment-item clearfix">
-                                            <div class="ltn__commenter-img">
-                                                <img src="img/testimonial/3.jpg" alt="Image">
-                                            </div>
-                                            <div class="ltn__commenter-comment">
-                                                <h6><a href="#">Adam Smit</a></h6>
-                                                <div class="product-ratting">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                    </ul>
+                                                <div class="ltn__commenter-comment">
+                                                    <h6><a href="#">@review.AppUser.FullName</a></h6>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>@review.Text</p>
+                                                    <span class="ltn__comment-reply-btn">@review.Date.ToString("MMMM dd yyyy")</span>
                                                 </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                <span class="ltn__comment-reply-btn">September 2, 2020</span>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ltn__comment-item clearfix">
-                                            <div class="ltn__commenter-img">
-                                                <img src="img/testimonial/2.jpg" alt="Image">
-                                            </div>
-                                            <div class="ltn__commenter-comment">
-                                                <h6><a href="#">Adam Smit</a></h6>
-                                                <div class="product-ratting">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                <span class="ltn__comment-reply-btn">September 2, 2020</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
                         <!-- comment-reply -->
                         <div class="ltn__comment-reply-area ltn__form-box mb-30">
-                            <form action="#">
+                            <form asp-controller="shop" asp-action="review" asp-route-id="@Model.Product.Id" method="post">
                                 <h4>Add a Review</h4>
                                 <div class="mb-30">
                                     <div class="add-a-review">
@@ -239,8 +205,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="productId" value="@Model.Product.Id" />
                                 <div class="input-item input-item-textarea ltn__custom-icon">
-                                    <textarea placeholder="Type your comments...."></textarea>
+                                    <textarea placeholder="Type your comments...." asp-for="Review.Text"></textarea>
+                                </div>
+                                <div class="input-item input-item-name ltn__custom-icon">
+                                    <input type="text" placeholder="Type your name...." asp-for="Review.Username" 
+                                                    value="@(member!=null?member.UserName:"")">
+                                </div>
+                                <div class="input-item input-item-email ltn__custom-icon">
+                                    <input type="email" placeholder="Type your email...." asp-for="Review.Email"
+                                           value="@(member!=null?member.Email:"")">
                                 </div>
                                 <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label>
                                 <div class="btn-wrapper">
@@ -392,8 +367,8 @@
                     <!-- Author Widget -->
                     <div class="widget ltn__author-widget">
                         <div class="ltn__author-widget-inner text-center">
-                            <img src="~/uploads/team/@Model.Team.Image" alt="Image">
-                            <h5>@Model.Team.Name</h5>
+                            <img src="~/uploads/team/@Model.Product.Team.Image" alt="Image">
+                            <h5>@Model.Product.Team.Name</h5>
                             <small>Sale Manager</small>
                             <div class="product-ratting">
                                 <ul>
@@ -429,12 +404,12 @@
                     <div class="widget ltn__form-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border-2">Drop Messege For Book</h4>
                         <form action="#">
-                           
+
                             <textarea name="yourmessage" placeholder="Write Message..."></textarea>
                             <button type="submit" class="btn theme-btn-1">Send Messege</button>
                         </form>
                     </div>
-                    
+
                     <!-- Menu Widget (Category) -->
                     <div class="widget ltn__menu-widget ltn__menu-widget-2--- ltn__menu-widget-2-color-2---">
                         <h4 class="ltn__widget-title ltn__widget-title-border-2">Top Categories</h4>
@@ -445,8 +420,8 @@
                             }
                         </ul>
                     </div>
-                  
-                    
+
+
                     <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget d-none">
                         <a href="shop.html"><img src="img/banner/2.jpg" alt="#"></a>

@@ -1,5 +1,7 @@
 ﻿using Back_End.Model;
 using Back_End.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,10 +14,13 @@ namespace Back_End.Controllers
     public class ShopController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public ShopController(AppDbContext context)
+
+        public ShopController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Index(int page=1)
@@ -30,6 +35,33 @@ namespace Back_End.Controllers
             ViewBag.TotalPage = Math.Ceiling(_context.Teams.Count() / 4m);
             ViewBag.SelectedPage = page;
             return View(shopVM);
+        }
+
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Review(int id,Review review)
+        {
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
+
+            Review newReview = new Review
+            {
+                Email = review.Email,
+                Username = review.Username,
+                Rate = 1,
+                Date = DateTime.UtcNow,
+                Text = review.Text,
+                ProductId =id,
+                AppUserId = (await _userManager.FindByNameAsync(User.Identity.Name)).Id
+
+            };
+
+            
+            _context.Reviews.Add(newReview);
+            _context.SaveChanges();
+
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
     }
 }

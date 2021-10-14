@@ -8,10 +8,20 @@ namespace Back_End.ViewModels
 {
     public class ShopViewModel
     {
+        public Product Product { get; set; }
+
         public List<Product> Products { get; set; }
+
         public List<Category> Categories { get; set; }
 
         public List<Status> Statuses { get; set; }
+
+        public List<Review> Reviews { get; set; }
+
+        public Review Review { get; set; }
+
+
+
 
     }
 }

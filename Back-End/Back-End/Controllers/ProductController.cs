@@ -155,15 +155,23 @@ namespace Back_End.Controllers
 
         }
 
-        public IActionResult Detail(int id)
+        public IActionResult Detail(int id,Review review)
         {
             Product product = _context.Products.Include(x => x.ProductImages).Include(x => x.Team).Include(x => x.Category).
                Include(x => x.City).Include(x => x.Status)
-               .Include(x => x.ProductTags).ThenInclude(x=>x.Tag).FirstOrDefault(x => x.Id == id);
+               .Include(x => x.ProductTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.Id == id);
 
-            ViewBag.Categories = _context.Categories.Include(x=>x.Products).ToList();
+            ViewBag.Categories = _context.Categories.Include(x => x.Products).ToList();
 
-            return View(product);
+
+            ShopViewModel shopVM = new ShopViewModel
+            {
+                Product = product,
+                Reviews=_context.Reviews.Include(x=>x.AppUser).Where(x=>x.ProductId==id).ToList()
+            };
+
+
+            return View(shopVM);
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Back_End.ViewModels
         public List<Category> Categories { get; set; }
         public List<Product> FeaturedProduct{ get; set; }
         public List<ProductTag> ProductTags { get; set; }
+        public List<Setting> Settings { get; set; }
+
 
 
 

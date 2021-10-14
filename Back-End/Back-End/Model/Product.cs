@@ -49,6 +49,8 @@ namespace Back_End.Model
         public Status Status { get; set; }
         public City City { get; set; }
 
+        public List<Review> Reviews { get; set; }
+
         public List<ProductTag> ProductTags { get; set; } = new List<ProductTag>();
 
 

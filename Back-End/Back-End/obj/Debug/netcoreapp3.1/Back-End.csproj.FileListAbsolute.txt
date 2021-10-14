@@ -338,3 +338,6 @@ C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.dll
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.pdb
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.genruntimeconfig.cache
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\AdminRole\Index.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Edit.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.AssemblyReference.cache

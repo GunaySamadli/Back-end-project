@@ -16,7 +16,6 @@ namespace Back_End.Model
 
         public DbSet<Slider> Sliders { get; set; }
 
-        public DbSet<Setting> Settings { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Team> Teams { get; set; }
 
@@ -34,6 +33,11 @@ namespace Back_End.Model
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<FavItems> FavItems { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
+
+
 
 
 

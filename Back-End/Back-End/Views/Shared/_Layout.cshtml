@@ -50,8 +50,9 @@
                         <div class="col-md-7">
                             <div class="ltn__top-bar-menu">
                                 <ul>
-                                    <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> @setting.HeaderEmail</a></li>
-                                    <li><a href="locations.html"><i class="icon-placeholder"></i> @setting.HeaderAddress</a></li>
+                                    <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="@setting.MailIcon"></i> @setting.SupportMail</a></li>
+
+                                    <li><a href="locations.html"><i class="@setting.Location"></i>  @setting.Adress</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -81,11 +82,11 @@
                                             <!-- ltn__social-media -->
                                             <div class="ltn__social-media">
                                                 <ul>
-                                                    <li><a href="#" title="Facebook"><i class="@setting.FacebookUrl"></i></a></li>
-                                                    <li><a href="#" title="Twitter"><i class="@setting.SkypeUrl"></i></a></li>
+                                                    <li><a href="@setting.FbUrl" title="Facebook"><i class="@setting.Fb"></i></a></li>
+                                                    <li><a href="@setting.TwitterUrl" title="Twitter"><i class="@setting.Twitter"></i></a></li>
 
-                                                    <li><a href="#" title="Instagram"><i class="@setting.InstagramUrl"></i></a></li>
-                                                    <li><a href="#" title="Dribbble"><i class="@setting.DribbbleUrl"></i></a></li>
+                                                    <li><a href="@setting.InstaUrl" title="Instagram"><i class="@setting.Insta"></i></a></li>
+                                                    <li><a href="@setting.DribbleUrl" title="Dribbble"><i class="@setting.Dribble"></i></a></li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -110,7 +111,7 @@
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="~/assets/img/@setting.HeaderLogo" alt="Logo"></a>
+                                    <a href="index.html"><img src="~/uploads/setting/@setting.HeaderLogo" alt="Logo"></a>
                                 </div>
                                 <div class="get-support clearfix d-none">
                                     <div class="get-support-icon">
@@ -118,7 +119,7 @@
                                     </div>
                                     <div class="get-support-info">
                                         <h6>Get Support</h6>
-                                        <h4><a href="tel:+123456789">@setting.ContactPhone</a></h4>
+                                        <h4><a href="tel:+123456789">@setting.Phone</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -189,8 +190,7 @@
 
                                                 <li><a asp-action="Login" asp-controller="account">Login</a></li>
                                                 <li><a asp-action="Register" asp-controller="account">Register</a></li>
-                                                <li><a href="account.html">My Account</a></li>
-
+                                                
                                             }
 
                                         </ul>
@@ -232,7 +232,7 @@
             <div class="ltn__utilize-menu-inner ltn__scrollbar">
                 <div class="ltn__utilize-menu-head">
                     <div class="site-logo">
-                        <a href="index.html"><img src="~/assets/img/logo.png" alt="Logo"></a>
+                        <a href="index.html"><img src="~/uploads/setting/@setting.FooterLogo" alt="Logo"></a>
                     </div>
                     <button class="ltn__utilize-close">×</button>
                 </div>
@@ -399,7 +399,7 @@
                             <div class="footer-widget footer-about-widget">
                                 <div class="footer-logo">
                                     <div class="site-logo">
-                                        <img src="~/assets/img/@setting.FooterLogo" alt="Logo">
+                                        <img src="~/uploads/setting/@setting.FooterLogo" alt="Logo">
                                     </div>
                                 </div>
                                 <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
@@ -410,7 +410,7 @@
                                                 <i class="icon-placeholder"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p>@setting.FooterAddress</p>
+                                                <p>@setting.Adress</p>
                                             </div>
                                         </li>
                                         <li>
@@ -418,7 +418,7 @@
                                                 <i class="icon-call"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="tel:+0123-456789">@setting.ContactPhone</a></p>
+                                                <p><a href="tel:+0123-456789">@setting.Phone</a></p>
                                             </div>
                                         </li>
                                         <li>
@@ -426,17 +426,18 @@
                                                 <i class="icon-mail"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="mailto:example@example.com">@setting.ContactEmail</a></p>
+                                                <p><a href="mailto:example@example.com">@setting.ContactMail</a></p>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="ltn__social-media mt-20">
                                     <ul>
-                                        <li><a href="#" title="Facebook"><i class="@setting.FacebookUrl"></i></a></li>
-                                        <li><a href="#" title="Twitter"><i class="@setting.SkypeUrl"></i></a></li>
-                                        <li><a href="#" title="Linkedin"><i class="@setting.LinkedinUrl"></i></a></li>
-                                        <li><a href="#" title="Youtube"><i class="@setting.YoutubeUrl"></i></a></li>
+                                        <li><a href="@setting.FbUrl" title="Facebook"><i class="@setting.Fb"></i></a></li>
+                                        <li><a href="@setting.TwitterUrl" title="Twitter"><i class="@setting.Twitter"></i></a></li>
+
+                                        <li><a href="@setting.InstaUrl" title="Instagram"><i class="@setting.Insta"></i></a></li>
+                                        <li><a href="@setting.DribbleUrl" title="Dribbble"><i class="@setting.Dribble"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

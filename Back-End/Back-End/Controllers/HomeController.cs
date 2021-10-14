@@ -42,7 +42,8 @@ namespace Back_End.Controllers
                 Tags=_context.Tags.ToList(),
                 Statuses=_context.Statuses.ToList(),
                 Cities=_context.Cities.ToList(),
-                Categories=_context.Categories.ToList(),
+                Settings = _context.Settings.ToList(),
+                Categories = _context.Categories.ToList(),
                 FeaturedProduct = _context.Products.Include(x=>x.ProductImages).
                  Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
                  Where(x=>x.IsFeatured).ToList()

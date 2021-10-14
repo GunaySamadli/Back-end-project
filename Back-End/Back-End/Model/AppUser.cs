@@ -11,5 +11,7 @@ namespace Back_End.Model
         public string FullName { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        public List<Review> Reviews { get; set; }
     }
 }

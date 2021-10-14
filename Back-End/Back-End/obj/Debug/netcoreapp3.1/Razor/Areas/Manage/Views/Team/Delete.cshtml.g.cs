@@ -26,8 +26,15 @@ using Back_End.Areas.Manage.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\Areas\Manage\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2ae16d264c8ce12203623449bb810f3067c1c65b", @"/Areas/Manage/Views/Team/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7831f073d64bb635c8272224ea2066e19a036b31", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9af3551e317702e7199657e7b0f51cc2426ce454", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Team_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Team>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,7 +82,7 @@ using Back_End.Areas.Manage.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</li>\r\n        </ul>\r\n        <div class=\"card-body\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ae16d264c8ce12203623449bb810f3067c1c65b4972", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ae16d264c8ce12203623449bb810f3067c1c65b5188", async() => {
                 WriteLiteral("Back");
             }
             );
@@ -92,7 +99,7 @@ using Back_End.Areas.Manage.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ae16d264c8ce12203623449bb810f3067c1c65b6220", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ae16d264c8ce12203623449bb810f3067c1c65b6436", async() => {
                 WriteLiteral("Delete");
             }
             );

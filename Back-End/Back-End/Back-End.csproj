@@ -18,6 +18,12 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\img\slider\" />
+    <Folder Include="wwwroot\uploads\member\" />
+    <Folder Include="wwwroot\uploads\setting\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Product\Detail.cshtml" />
   </ItemGroup>
 
 </Project>

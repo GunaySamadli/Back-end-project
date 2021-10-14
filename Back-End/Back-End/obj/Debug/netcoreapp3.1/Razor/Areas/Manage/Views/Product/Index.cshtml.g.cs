@@ -26,8 +26,15 @@ using Back_End.Areas.Manage.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\Areas\Manage\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a298208934753d0f01f0f1050eca4b7a1f2e9950", @"/Areas/Manage/Views/Product/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7831f073d64bb635c8272224ea2066e19a036b31", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9af3551e317702e7199657e7b0f51cc2426ce454", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Product_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("navbar-form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -84,7 +91,7 @@ using Back_End.Areas.Manage.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div class=\"container-fluid\" style=\"margin-top:100px\">\r\n    <div class=\"justify-content-between d-flex align-items-center\">\r\n        <h1>Teams</h1>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e99508881", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e99509097", async() => {
                 WriteLiteral(@"
             <div class=""input-group no-border"">
                 <input type=""text"" name=""search"" class=""form-control"" placeholder=""Search..."">
@@ -111,7 +118,7 @@ using Back_End.Areas.Manage.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995010822", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995011038", async() => {
                 WriteLiteral("Create");
             }
             );
@@ -219,7 +226,7 @@ using Back_End.Areas.Manage.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                <td>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a298208934753d0f01f0f1050eca4b7a1f2e995015186", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a298208934753d0f01f0f1050eca4b7a1f2e995015402", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -243,7 +250,7 @@ AddHtmlAttributeValue("", 1897, product.ProductImages.FirstOrDefault(x=>x.Poster
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</td>\r\n\r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995016889", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995017105", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -275,7 +282,7 @@ AddHtmlAttributeValue("", 1897, product.ProductImages.FirstOrDefault(x=>x.Poster
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995019166", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995019382", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -324,7 +331,7 @@ AddHtmlAttributeValue("", 1897, product.ProductImages.FirstOrDefault(x=>x.Poster
 #line hidden
 #nullable disable
             WriteLiteral("                    <li class=\"page-item \">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995022241", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995022457", async() => {
                 WriteLiteral("\r\n                            <span style=\"outline: none; background: none; font-size: 22px; color: #89229b \" aria-hidden=\"true\">&laquo;</span>\r\n                            <span class=\"sr-only\">Previous</span>\r\n                        ");
             }
             );
@@ -394,7 +401,7 @@ WriteAttributeValue("", 3491, i==selectedPage?"active":"", 3491, 30, false);
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995026406", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995026622", async() => {
 #nullable restore
 #line 83 "C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\Areas\Manage\Views\Product\Index.cshtml"
                                                                                                                                                                                                                                                                            Write(i);
@@ -459,7 +466,7 @@ WriteAttributeValue("", 3491, i==selectedPage?"active":"", 3491, 30, false);
 #line hidden
 #nullable disable
             WriteLiteral("                    <li class=\"page-item\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995030720", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a298208934753d0f01f0f1050eca4b7a1f2e995030936", async() => {
                 WriteLiteral("\r\n                            <span style=\"outline: none; background: none; font-size: 22px; color: #89229b \" aria-hidden=\"true\">&raquo;</span>\r\n                            <span class=\"sr-only\">Next</span>\r\n                        ");
             }
             );

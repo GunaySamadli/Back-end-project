@@ -253,6 +253,43 @@ namespace Back_End.Migrations
                     b.ToTable("ProductTags");
                 });
 
+            modelBuilder.Entity("Back_End.Model.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("Back_End.Model.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -291,79 +328,112 @@ namespace Back_End.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AboutDesc")
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("AboutImage")
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<string>("AboutSubtitle")
-                        .IsRequired()
+                    b.Property<string>("AboutSubDesc")
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
                     b.Property<string>("AboutTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("AboutVideo")
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("ContactEmail")
+                    b.Property<string>("AboutUrl")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<string>("ContactPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                    b.Property<string>("AboutUrlText")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("DribbbleUrl")
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("ContactMail")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("FacebookUrl")
+                    b.Property<string>("CopyRight")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Dribble")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("FooterAddress")
-                        .IsRequired()
+                    b.Property<string>("DribbleUrl")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Fb")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("FbUrl")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("FooterDesc")
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
                     b.Property<string>("FooterLogo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("HeaderAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("HeaderEmail")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("HeaderLogo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<string>("InstagramUrl")
+                    b.Property<string>("HomePageImg")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Insta")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("LinkedinUrl")
+                    b.Property<string>("InstaUrl")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("SkypeUrl")
+                    b.Property<string>("MailIcon")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("YoutubeUrl")
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("PhoneIcon")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<string>("ServiceImage")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("SupportMail")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("TwitterUrl")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
                     b.HasKey("Id");
 
@@ -765,6 +835,19 @@ namespace Back_End.Migrations
                     b.HasOne("Back_End.Model.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Back_End.Model.Review", b =>
+                {
+                    b.HasOne("Back_End.Model.AppUser", "AppUser")
+                        .WithMany("Reviews")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Back_End.Model.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
