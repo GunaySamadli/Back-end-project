@@ -21,15 +21,11 @@ namespace Back_End.ViewModels
 
         [StringLength(maximumLength: 25, MinimumLength = 6)]
         [DataType(DataType.Password)]
-        public string NewPassword { get; set; }
+        public string Password { get; set; }
 
         [StringLength(maximumLength: 25, MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Compare(nameof(NewPassword))]
+        [Compare(nameof(Password))]
         public string ConfirmNewPassword { get; set; }
-
-        [StringLength(maximumLength: 25, MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        public string CurrentPassword { get; set; }
     }
 }

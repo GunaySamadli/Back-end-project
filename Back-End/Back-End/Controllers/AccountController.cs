@@ -111,7 +111,7 @@ namespace Back_End.Controllers
             return RedirectToAction("index", "home");
 
 
-            //return Response.Redirect(Request.UrlReferrer.ToString());
+            
 
         }
 
@@ -183,6 +183,11 @@ namespace Back_End.Controllers
 
             TempData["Success"] = true;
             return RedirectToAction("profile");
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
     }
 }

@@ -177,11 +177,19 @@
                                                     <h6><a href="#">@review.AppUser.FullName</a></h6>
                                                     <div class="product-ratting">
                                                         <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                            @for (int i = 1; i <= 5; i++)
+                                                            {
+                                                                if (i <= Model.Product.Rate)
+                                                                {
+                                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+
+                                                                }
+                                                            }
+                                                                                                               
                                                         </ul>
                                                     </div>
                                                     <p>@review.Text</p>
@@ -197,39 +205,40 @@
                         <div class="ltn__comment-reply-area ltn__form-box mb-30">
                             @if (!Model.Reviews.Any(x => x.ProductId == Model.Product.Id && x.AppUserId==member?.Id))
                             {
-                                <form asp-controller="shop" asp-action="review" asp-route-id="@Model.Product.Id" method="post">
-                                    <h4>Add a Review</h4>
-                                    <div class="mb-30">
-                                        <div class="add-a-review">
-                                            <h6>Your Ratings:</h6>
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                </ul>
-                                            </div>
+                            <form asp-controller="shop" asp-action="review" asp-route-id="@Model.Product.Id" method="post">
+                                <h4>Add a Review</h4>
+                                <div class="mb-30">
+                                    <div class="add-a-review">
+                                        <h6>Your Ratings:</h6>
+                                        <div class="product-ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-star rank"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star rank"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star rank"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star rank"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star rank"></i></a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="productId" value="@Model.Product.Id" />
-                                    <div class="input-item input-item-textarea ltn__custom-icon">
-                                        <textarea placeholder="Type your comments...." asp-for="Review.Text"></textarea>
-                                    </div>
-                                    <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" placeholder="Type your name...." asp-for="Review.Username"
-                                               value="@(member!=null?member.UserName:"")">
-                                    </div>
-                                    <div class="input-item input-item-email ltn__custom-icon">
-                                        <input type="email" placeholder="Type your email...." asp-for="Review.Email"
-                                               value="@(member!=null?member.Email:"")">
-                                    </div>
-                                    <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label>
-                                    <div class="btn-wrapper">
-                                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
-                                    </div>
-                                </form>
+                                </div>
+                                <input type="hidden" asp-for="Review.Rate" class="rate" value="1" />
+                                <input type="hidden" name="productId" value="@Model.Product.Id" />
+                                <div class="input-item input-item-textarea ltn__custom-icon">
+                                    <textarea placeholder="Type your comments...." asp-for="Review.Text"></textarea>
+                                </div>
+                                <div class="input-item input-item-name ltn__custom-icon">
+                                    <input type="text" placeholder="Type your name...." asp-for="Review.Username"
+                                           value="@(member!=null?member.UserName:"")">
+                                </div>
+                                <div class="input-item input-item-email ltn__custom-icon">
+                                    <input type="email" placeholder="Type your email...." asp-for="Review.Email"
+                                           value="@(member!=null?member.Email:"")">
+                                </div>
+                                <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label>
+                                <div class="btn-wrapper">
+                                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
+                                </div>
+                            </form>
                             }
                         </div>
                     </div>

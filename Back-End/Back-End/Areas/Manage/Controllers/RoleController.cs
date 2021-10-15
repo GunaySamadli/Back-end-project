@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace Back_End.Areas.Manage.Controllers
 {
     [Area("manage")]
-    public class AdminRoleController : Controller
+    public class RoleController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AdminRoleController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public RoleController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -34,7 +34,6 @@ namespace Back_End.Areas.Manage.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(IdentityRole identityRole)
         {
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -43,15 +42,13 @@ namespace Back_End.Areas.Manage.Controllers
             await _roleManager.CreateAsync(identityRole);
 
             await _roleManager.UpdateAsync(identityRole);
-            
 
             return RedirectToAction("index");
         }
 
         public IActionResult Edit(string name)
         {
-            IdentityRole role = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
-
+            IdentityRole role = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
             if (role == null) return NotFound();
 
             TempData["name"] = name;
@@ -64,15 +61,13 @@ namespace Back_End.Areas.Manage.Controllers
         public async Task<IActionResult> Edit(IdentityRole identityRole)
         {
             var name = TempData["name"];
-            IdentityRole ExistRole = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
+            IdentityRole existRole = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
 
-            if (ExistRole == null) return NotFound();
+            if (existRole == null) return NotFound();
 
-            ExistRole.Name = identityRole.Name;
+            existRole.Name = identityRole.Name;
 
-            await _roleManager.UpdateAsync(ExistRole);
-
-            
+            await _roleManager.UpdateAsync(existRole);
 
             return RedirectToAction("index");
         }
@@ -87,3 +82,7 @@ namespace Back_End.Areas.Manage.Controllers
         }
     }
 }
+
+
+
+

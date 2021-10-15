@@ -57,7 +57,7 @@ namespace Back_End.Controllers
                 {
                     Email = review.Email,
                     Username = review.Username,
-                    Rate = 1,
+                    Rate = review.Rate,
                     Date = DateTime.UtcNow,
                     Text = review.Text,
                     ProductId = id,

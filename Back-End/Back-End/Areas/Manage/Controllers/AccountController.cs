@@ -109,32 +109,50 @@ namespace Back_End.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddAdmin(AdminViewModel adminVm)
         {
-            if (!ModelState.IsValid) return View();
-
-            AppUser admin = _userManager.Users.FirstOrDefault(x => x.UserName == adminVm.UserName && x.IsAdmin == true);
-
-            if (admin == null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "istifadeci adi ve ya sifre yanlisdir!");
                 return View();
             }
 
-            var result = await _signInManager.PasswordSignInAsync(admin, adminVm.CurrentPassword, true, true);
+            AppUser admin = await _userManager.FindByNameAsync(adminVm.UserName);
+            if (admin != null)
+            {
+                ModelState.AddModelError("UserName", "UserName already taken!");
+                return View();
+            }
+
+            admin = await _userManager.FindByEmailAsync(adminVm.Email);
+            if (admin != null)
+            {
+                ModelState.AddModelError("Email", "Email already taken!");
+                return View();
+            }
+
+
+            admin = new AppUser
+            {
+                FullName = adminVm.FullName,
+                UserName = adminVm.UserName,
+                Email = adminVm.Email,
+                IsAdmin = true
+            };
+
+            var result = await _userManager.CreateAsync(admin, adminVm.Password);
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "istifadeci adi ve ya sifre yanlisdir!");
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
                 return View();
             }
 
-            AdminViewModel adminVM = new AdminViewModel
-            {
-                Email = admin.Email,
-                FullName = admin.FullName,
-                UserName = admin.UserName
-            };
+            var roleResult = await _userManager.AddToRoleAsync(admin, "Admin");
+            await _signInManager.SignInAsync(admin, true);
 
-            
+
 
             return RedirectToAction("index", "dashboard");
         }

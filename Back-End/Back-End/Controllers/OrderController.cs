@@ -43,7 +43,8 @@ namespace Back_End.Controllers
             };
             _context.Orders.Add(order);
             _context.SaveChanges();
-            return RedirectToAction("login","account");
+
+            return RedirectToAction("profile","account");
         }
     }
 }

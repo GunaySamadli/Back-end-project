@@ -64,5 +64,14 @@ $(document).ready(function () {
         $("#quick_view_modal").modal("show")
     });
 
-   
+    let ranks = document.querySelectorAll('.product-ratting .rank');
+    ranks.forEach(function (elem, index) {
+        elem.addEventListener('click', function () {
+            let rank = index + 1;
+            document.querySelector('.rate').value = rank;
+            for (let i = 0; i < rank; i++) {
+                ranks[i].style.color = '#cb3421';
+            }
+        })
+    });
 })
