@@ -64,5 +64,17 @@ namespace Back_End.Controllers
 
             return PartialView("_ProductModalView", product);
         }
+
+        public IActionResult Search(string search)
+        {
+            var query = _context.Products.Include(x => x.ProductImages).Include(x => x.City)
+                                            .Include(x => x.Team).Include(x => x.Status)
+                                            .Include(x => x.ProductTags)
+                                            .ThenInclude(x => x.Tag).AsQueryable()
+                                            .Where(x => x.Name.Contains(search));
+            List<Product> products = query.OrderByDescending(x=>x.Id).Take(3).ToList();
+            return PartialView("_SearchPartial",products);
+        }
+
     }
 }

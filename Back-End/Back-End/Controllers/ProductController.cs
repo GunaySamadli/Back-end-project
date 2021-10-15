@@ -69,7 +69,8 @@ namespace Back_End.Controllers
             }
             else
             {
-                FavItems memberFavItem = _context.FavItems.FirstOrDefault(x => x.AppUserId == member.Id && x.ProductId == id);
+                FavItems memberFavItem = _context.FavItems
+                                        .FirstOrDefault(x => x.AppUserId == member.Id && x.ProductId == id);
                 if (memberFavItem == null)
                 {
                     memberFavItem = new FavItems
@@ -89,7 +90,8 @@ namespace Back_End.Controllers
                       Count = x.Count,
                       Name = x.Product.Name,
                       Price = x.Product.SalePrice,
-                      Image = x.Product.ProductImages.FirstOrDefault(bi => bi.PosterStatus == true).Image
+                      Image = x.Product.ProductImages
+                                .FirstOrDefault(bi => bi.PosterStatus == true).Image
                   }).ToList();
             }
             return PartialView("_FavPartial", products);

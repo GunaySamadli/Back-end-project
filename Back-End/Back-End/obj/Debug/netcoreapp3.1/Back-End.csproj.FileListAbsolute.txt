@@ -353,3 +353,4 @@ C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Edit.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Create.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs

@@ -60,7 +60,10 @@ namespace Back_End.Services
             }
             else
             {
-                List<FavItems> favItems = _context.FavItems.Include(x => x.Product).ThenInclude(x => x.ProductImages).Where(x => x.AppUserId == member.Id).ToList();
+                List<FavItems> favItems = _context.FavItems.Include(x => x.Product)
+                                                            .ThenInclude(x => x.ProductImages)
+                                                            .Where(x => x.AppUserId == member.Id)
+                                                            .ToList();
                 items = favItems.Select(x => new FavItemViewModel
                 {
                     ProductId = x.ProductId,

@@ -5055,7 +5055,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   z-index: 9999; }
   .header-search-1-form form {
     position: relative;
-    margin: 15px 15px 0; }
+    margin: 15px; }
   .header-search-1-form input {
     height: 60px;
     padding-right: 50px; }
@@ -5092,7 +5092,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     visibility: hidden; }
 
 .search-open.header-search-1-form {
-  height: 90px; }
+  height: max-content }
 
 .search-open .for-search-show {
   opacity: 0;
