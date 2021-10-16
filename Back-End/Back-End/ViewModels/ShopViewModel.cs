@@ -22,6 +22,5 @@ namespace Back_End.ViewModels
 
 
 
-
     }
 }

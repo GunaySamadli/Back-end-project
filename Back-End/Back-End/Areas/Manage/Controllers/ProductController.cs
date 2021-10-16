@@ -149,7 +149,7 @@ namespace Back_End.Areas.Manage.Controllers
 
                     ProductImage image = new ProductImage
                     {
-                        PosterStatus = null,
+                        PosterStatus = false,
                         Image = FileManager.Save(_env.WebRootPath, "uploads/product", file)
                     };
 
@@ -170,7 +170,7 @@ namespace Back_End.Areas.Manage.Controllers
         {
             Product product = _context.Products.Include(x => x.ProductImages).Include(x => x.Team).Include(x => x.Category).
                 Include(x => x.City).Include(x => x.Status)
-                .Include(x => x.ProductTags).FirstOrDefault(x => x.Id == id);
+                .Include(x => x.ProductTags).ThenInclude(x=>x.Tag).FirstOrDefault(x => x.Id == id);
 
             ViewBag.Teams = _context.Teams.ToList();
             ViewBag.Category = _context.Categories.ToList();
@@ -258,7 +258,7 @@ namespace Back_End.Areas.Manage.Controllers
 
 
 
-            existProudct.ProductImages.RemoveAll(x => x.PosterStatus == null && !product.ProductImageIds.Contains(x.Id));
+            existProudct.ProductImages.RemoveAll(x => x.PosterStatus == false && !product.ProductImageIds.Contains(x.Id));
 
             if (product.ImageFiles != null)
             {
@@ -278,7 +278,7 @@ namespace Back_End.Areas.Manage.Controllers
 
                     ProductImage image = new ProductImage
                     {
-                        PosterStatus = null,
+                        PosterStatus = false,
                         Image = FileManager.Save(_env.WebRootPath, "uploads/product", file)
                     };
 

@@ -293,50 +293,42 @@
                         <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
                         <h1 class="section-title">Today Sells Properties</h1>
                         <p>
-                           @Model.LastProduct.Product.Desc
+                            @Model.LastProduct.Product.Desc
                         </p>
                     </div>
                     <ul class="ltn__list-item-1 ltn__list-item-1-before clearfix">
-                        <li> @Model.LastProduct.Id</li>
-                        <li>Our SecretIsland Boat Tour is Just for You</li>
-                        <li>Live Music Cocerts at Luviana</li>
-                        <li>Live Music Cocerts at Luviana</li>
+                        <li> @Model.LastProduct.Product.City.Name</li>
+                        <li>@Model.LastProduct.Product.Category.Name</li>
+                        <li>@Model.LastProduct.Product.Status.Name</li>
+                        <li>@Model.LastProduct.Product.Team.Name</li>
                     </ul>
                     <ul class="ltn__list-item-2 ltn__list-item-2-before ltn__flat-info">
                         <li>
-                            <span>3 <i class="flaticon-bed"></i></span>
+                            <span>@Model.LastProduct.Product.Beds <i class="flaticon-bed"></i></span>
                             Bedrooms
                         </li>
                         <li>
-                            <span>2 <i class="flaticon-clean"></i></span>
+                            <span>@Model.LastProduct.Product.Baths <i class="flaticon-clean"></i></span>
                             Bathrooms
                         </li>
                         <li>
-                            <span>2 <i class="flaticon-car"></i></span>
-                            Car parking
-                        </li>
-                        <li>
-                            <span>3450 <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
+                            <span>@Model.LastProduct.Product.HomeArea <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
                             square Ft
                         </li>
                     </ul>
+                    
                     <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
-                        <li>
-                            <a href="~/assets/img/img-slide/11.jpg" data-rel="lightcase:myCollection">
-                                <img src="~/assets/img/img-slide/11.jpg" alt="Image">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="~/assets/img/img-slide/12.jpg" data-rel="lightcase:myCollection">
-                                <img src="~/assets/img/img-slide/12.jpg" alt="Image">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="~/assets/img/img-slide/13.jpg" data-rel="lightcase:myCollection">
-                                <img src="~/assets/img/img-slide/13.jpg" alt="Image">
-                            </a>
-                        </li>
+                        @foreach (var item in @Model.LastProduct.Product.ProductImages.Take(3))
+                        {
+                            <li>
+                                <a href="~/uploads/product/@item.Image" data-rel="lightcase:myCollection">
+                                    <img src="~/uploads/product/@item.Image" alt="Image">
+                                </a>
+                            </li>
+                        }
+
                     </ul>
+
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">

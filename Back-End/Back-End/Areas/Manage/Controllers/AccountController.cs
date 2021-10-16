@@ -97,31 +97,29 @@ namespace Back_End.Areas.Manage.Controllers
         }
 
 
-        [Authorize("SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public IActionResult AddAdmin()
         {
             return View();
         }
 
-
-        [Authorize("SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddAdmin(AdminViewModel adminVm)
+        public async Task<IActionResult> AddAdmin(AddAdminViewModel addAdmin)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            AppUser admin = await _userManager.FindByNameAsync(adminVm.UserName);
+            AppUser admin = await _userManager.FindByNameAsync(addAdmin.UserName);
             if (admin != null)
             {
                 ModelState.AddModelError("UserName", "UserName already taken!");
                 return View();
             }
 
-            admin = await _userManager.FindByEmailAsync(adminVm.Email);
+            admin = await _userManager.FindByEmailAsync(addAdmin.Email);
             if (admin != null)
             {
                 ModelState.AddModelError("Email", "Email already taken!");
@@ -131,13 +129,13 @@ namespace Back_End.Areas.Manage.Controllers
 
             admin = new AppUser
             {
-                FullName = adminVm.FullName,
-                UserName = adminVm.UserName,
-                Email = adminVm.Email,
+                FullName = addAdmin.FullName,
+                UserName = addAdmin.UserName,
+                Email = addAdmin.Email,
                 IsAdmin = true
             };
 
-            var result = await _userManager.CreateAsync(admin, adminVm.Password);
+            var result = await _userManager.CreateAsync(admin, addAdmin.Password);
 
             if (!result.Succeeded)
             {
@@ -151,8 +149,6 @@ namespace Back_End.Areas.Manage.Controllers
 
             var roleResult = await _userManager.AddToRoleAsync(admin, "Admin");
             await _signInManager.SignInAsync(admin, true);
-
-
 
             return RedirectToAction("index", "dashboard");
         }

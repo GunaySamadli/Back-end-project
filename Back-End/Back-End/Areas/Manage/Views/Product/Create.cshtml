@@ -8,21 +8,17 @@
     <h1>Create</h1>
     <form method="post" enctype="multipart/form-data">
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label asp-for="Name">Name</label>
                 <input asp-for="Name" class="form-control">
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label asp-for="Desc">Desc</label>
                 <input asp-for="Desc" class="form-control">
                 <span class="text-danger" asp-validation-for="Desc"></span>
             </div>
-            <div class="form-group col-md-4">
-                <label asp-for="StatusId">Team</label>
-                <select asp-for="StatusId" class="form-control" id="StatusId" asp-items="@(new SelectList(ViewBag.Status,"Id","Name"))">
-                </select>
-            </div>
+
         </div>
         <div class="form-row">
             <div class="form-group col-md-3">
@@ -43,6 +39,23 @@
             <div class="form-group col-md-3">
                 <label asp-for="CityId">City</label>
                 <select asp-for="CityId" class="form-control" id="CityId" asp-items="@(new SelectList(ViewBag.City,"Id","Name"))">
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="CreatedAt">CreatedAt</label>
+                <input asp-for="CreatedAt" class="form-control">
+                <span class="text-danger" asp-validation-for="CreatedAt"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="HomeArea">HomeArea</label>
+                <input asp-for="HomeArea" class="form-control">
+                <span class="text-danger" asp-validation-for="HomeArea"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="StatusId">Status</label>
+                <select asp-for="StatusId" class="form-control" id="StatusId" asp-items="@(new SelectList(ViewBag.Status,"Id","Name"))">
                 </select>
             </div>
         </div>
@@ -72,7 +85,7 @@
             <div class="form-group col-md-6">
                 <div class="form-check">
                     <input style="margin-left:0" asp-for="WhichFloor">
-                    <label asp-for="WhichFloor" class="form-check-label">WhichFloor</label>
+                    <label asp-for="WhichFloor" class="form-check-label">How many Floor?</label>
                     <span class="text-danger" asp-validation-for="WhichFloor"></span>
                 </div>
             </div>
@@ -81,31 +94,26 @@
                 <input asp-for="Location" class="form-control">
                 <span class="text-danger" asp-validation-for="Location"></span>
             </div>
-          
+
         </div>
         <div class="form-row" style="margin-top:50px">
-            <div class="form-group col-md-6" >
+            <div class="form-group col-md-6">
                 <input style="margin-left:0" asp-for="HouseFloor">
-                <label asp-for="HouseFloor" class="form-check-label">HouseFloor</label>
+                <label asp-for="HouseFloor" class="form-check-label">Which Floor?</label>
                 <span class="text-danger" asp-validation-for="HouseFloor"></span>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <input asp-for="IsFeatured" class="form-check-input">
                 <label asp-for="IsFeatured" class="form-check-label">IsFeatured</label>
                 <span class="text-danger" asp-validation-for="IsFeatured"></span>
             </div>
-        </div>
 
+        </div>
         <div class="form-row">
             <div class="form-group col-md-4" style="margin: 0!important">
                 <label asp-for="PosterFile">PosterFile</label>
                 <input style="position: static; opacity: 1;" asp-for="PosterFile" class="form-control">
                 <span class="text-danger" asp-validation-for="PosterFile"></span>
-            </div>
-            <div class="form-group col-md-4">
-                <label asp-for="CreatedAt">CreatedAt</label>
-                <input asp-for="CreatedAt" class="form-control">
-                <span class="text-danger" asp-validation-for="CreatedAt"></span>
             </div>
         </div>
         <div class="form-row">

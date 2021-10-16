@@ -73,7 +73,6 @@ namespace Back_End.Controllers
             return RedirectToAction("index", "home");
         }
 
-
         public IActionResult Login()
         {
             return View();

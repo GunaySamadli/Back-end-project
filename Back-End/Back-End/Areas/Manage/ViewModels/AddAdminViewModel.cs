@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Back_End.ViewModels
+namespace Back_End.Areas.Manage.ViewModels
 {
-    public class AdminViewModel
+    public class AddAdminViewModel
     {
         public string UserName { get; set; }
 
@@ -26,6 +26,6 @@ namespace Back_End.ViewModels
         [StringLength(maximumLength: 25, MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
-        public string ConfirmNewPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

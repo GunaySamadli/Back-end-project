@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Back_End.Areas.Manage.Controllers
 {
-    //[Authorize(Roles = "Admin,SuperAdmin")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     [Area("manage")]
     public class OrderController : Controller
     {
