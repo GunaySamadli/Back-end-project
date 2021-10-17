@@ -164,7 +164,8 @@ namespace Back_End.Controllers
                .Include(x => x.ProductTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.Id == id);
 
             ViewBag.Categories = _context.Categories.Include(x => x.Products).ToList();
-
+            ViewBag.RelatedProducts = _context.Products.Include(x => x.ProductImages).Include(x => x.Team)
+                .Include(x => x.City).Include(x => x.Status).ToList();
 
             ShopViewModel shopVM = new ShopViewModel
             {

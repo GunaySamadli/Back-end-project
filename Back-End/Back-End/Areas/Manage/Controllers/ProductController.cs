@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Back_End.Areas.Manage.Controllers
 {
     [Area("manage")]
-    //[Authorize(Roles = "Admin,SuperAdmin")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
 
     public class ProductController : Controller
     {
