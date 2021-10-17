@@ -20,6 +20,8 @@ namespace Back_End.ViewModels
         public List<Product> FeaturedProduct{ get; set; }
         public List<ProductTag> ProductTags { get; set; }
         public List<Setting> Settings { get; set; }
+        public List<Review> Reviews { get; set; }
+
 
         public Order LastProduct { get; set; }
 

@@ -159,7 +159,7 @@ namespace Back_End.Controllers
 
         public IActionResult Detail(int id,Review review)
         {
-            Product product = _context.Products.Include(x => x.ProductImages).Include(x => x.Team).Include(x => x.Category).
+            Product product = _context.Products.Where(x=>x.IsSold==false).Include(x => x.ProductImages).Include(x => x.Team).Include(x => x.Category).
                Include(x => x.City).Include(x => x.Status)
                .Include(x => x.ProductTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.Id == id);
 

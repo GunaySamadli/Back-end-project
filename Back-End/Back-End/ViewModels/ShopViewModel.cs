@@ -17,8 +17,10 @@ namespace Back_End.ViewModels
         public List<Status> Statuses { get; set; }
 
         public List<Review> Reviews { get; set; }
+        public List<City> Cities { get; set; }
 
         public Review Review { get; set; }
+
 
 
 

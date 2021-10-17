@@ -203,7 +203,7 @@
                         </div>
                         <!-- comment-reply -->
                         <div class="ltn__comment-reply-area ltn__form-box mb-30">
-                            @if (!Model.Reviews.Any(x => x.ProductId == Model.Product.Id && x.AppUserId==member?.Id))
+                            @if (!Model.Reviews.Any(x => x.ProductId == Model.Product.Id && x.AppUserId==member?.Id) && member!=null)
                             {
                             <form asp-controller="shop" asp-action="review" asp-route-id="@Model.Product.Id" method="post">
                                 <h4>Add a Review</h4>
@@ -410,23 +410,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Search Widget -->
-                    <div class="widget ltn__search-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border-2">Search Objects</h4>
-                        <form action="#">
-                            <input type="text" name="search" placeholder="Search your keyword...">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
-                    <!-- Form Widget -->
-                    <div class="widget ltn__form-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border-2">Drop Messege For Book</h4>
-                        <form action="#">
-
-                            <textarea name="yourmessage" placeholder="Write Message..."></textarea>
-                            <button type="submit" class="btn theme-btn-1">Send Messege</button>
-                        </form>
-                    </div>
+                
 
                     <!-- Menu Widget (Category) -->
                     <div class="widget ltn__menu-widget ltn__menu-widget-2--- ltn__menu-widget-2-color-2---">

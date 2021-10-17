@@ -49,8 +49,31 @@ namespace Back_End.Controllers
                 Categories = _context.Categories.ToList(),
                 FeaturedProduct = _context.Products.Include(x=>x.ProductImages).
                  Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
-                 Where(x=>x.IsFeatured).ToList()
+                 Where(x=>x.IsFeatured).ToList(),
+                Reviews = _context.Reviews.Include(x => x.AppUser).ToList()
             };
+            var products = _context.Products.ToList();
+            var orders = _context.Orders.ToList();
+            double totalArea = 0;
+            int totalSold = 0;
+            int totalRooms = 0;
+
+            foreach (var item in products)
+            {
+                totalArea += item.HomeArea;
+                totalRooms += item.Rooms;
+            }
+
+            foreach (var item in orders)
+            {
+                totalSold += ((int)(item.Status = Model.Enum.OrderStatus.Accepted));
+            }
+
+            ViewBag.TotalArea = totalArea;
+            ViewBag.TotalSold = totalSold;
+            ViewBag.TotalCount = products.Count();
+            ViewBag.TotalRooms = totalRooms;
+
             return View(homeVM);
         }
 

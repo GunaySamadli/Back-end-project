@@ -80,7 +80,7 @@
 
                 @for (int i = startPage; i <= endPage; i++)
                 {
-                    <li style="padding: 10px; background-color: #ff9800; border: 1px solid #89229b;margin-right:5px;border-radius:10px" class="@(i==selectedPage?"active":"")"><a asp-action="index" asp-route-page="@i" asp-route-genreId="@ViewBag.GenreId" class="page-item">@i</a></li>
+                    <li style="padding: 10px; background-color: #ff9800; border: 1px solid #89229b;margin-right:5px;border-radius:10px" class="@(i==selectedPage?"active":"")"><a asp-action="index" asp-route-page="@i" asp-route-search="@ViewBag.CurrentSearch " class="page-item">@i</a></li>
                 }
                 @if (selectedPage < totalPage)
                 {

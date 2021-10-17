@@ -99,39 +99,28 @@
                     <div class="tab-content bg-white box-shadow-1 position-relative pb-10">
                         <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
                             <div class="car-dealer-form-inner">
-                                <form action="#" class="ltn__car-dealer-form-box row">
+                                <form method="get" class="ltn__car-dealer-form-box row" asp-action="index" asp-controller="shop">
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                        <select class="nice-select">
-                                            <option>Choose Area</option>
-                                            @foreach (var city in Model.Cities)
-                                            {
-                                                <option>@city.Name</option>
-                                            }
+                                        <select class="nice-select" name="cityId" asp-items="@(new SelectList(Model.Cities,"Id","Name"))">
+                                            <option value="null">Select City</option>
+
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                        <select class="nice-select">
-                                            <option>Property Status</option>
+                                        <select class="nice-select" name="statusId" asp-items="@(new SelectList(Model.Statuses,"Id","Name"))">
+                                            <option value="null">Select Status</option>
 
-                                            @foreach (var status in Model.Statuses)
-                                            {
-                                                <option>@status.Name</option>
-                                            }
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
-                                        <select class="nice-select">
-                                            <option>Property Type</option>
-                                            @foreach (var category in Model.Categories)
-                                            {
-                                                <option>@category.Name</option>
-                                            }
+                                        <select class="nice-select" name="categoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">
+                                            <option value="null">Select Category</option>
+
                                         </select>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
                                         <div class="btn-wrapper text-center mt-0">
-                                            <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                            <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</a>
+                                            <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button>
                                         </div>
                                     </div>
                                 </form>
@@ -230,7 +219,7 @@
                         </p>
                     </div>
                     <div class="btn-wrapper animated">
-                        <a href="service.html" class="theme-btn-1 btn btn-effect-1">OUR SERVICES</a>
+                        <a asp-action="index" asp-controller="service" class="theme-btn-1 btn btn-effect-1">OUR SERVICES</a>
                     </div>
                 </div>
             </div>
@@ -248,7 +237,7 @@
                     <div class="counter-icon">
                         <i class="flaticon-select"></i>
                     </div>
-                    <h1><span class="counter">560</span><span class="counterUp-icon">+</span> </h1>
+                    <h1><span class="counter">@ViewBag.TotalArea</span><span class="counterUp-icon">+</span> </h1>
                     <h6>Total Area Sq</h6>
                 </div>
             </div>
@@ -257,7 +246,7 @@
                     <div class="counter-icon">
                         <i class="flaticon-office"></i>
                     </div>
-                    <h1><span class="counter">197</span><span class="counterUp-letter">K</span><span class="counterUp-icon">+</span> </h1>
+                    <h1><span class="counter">@ViewBag.TotalSold </span><span class="counterUp-icon">+</span> </h1>
                     <h6>Apartments Sold</h6>
                 </div>
             </div>
@@ -266,7 +255,7 @@
                     <div class="counter-icon">
                         <i class="flaticon-excavator"></i>
                     </div>
-                    <h1><span class="counter">268</span><span class="counterUp-icon">+</span> </h1>
+                    <h1><span class="counter">@ViewBag.TotalCount</span><span class="counterUp-icon">+</span> </h1>
                     <h6>Total Constructions</h6>
                 </div>
             </div>
@@ -275,7 +264,7 @@
                     <div class="counter-icon">
                         <i class="flaticon-armchair"></i>
                     </div>
-                    <h1><span class="counter">340</span><span class="counterUp-icon">+</span> </h1>
+                    <h1><span class="counter">@ViewBag.TotalRooms</span><span class="counterUp-icon">+</span> </h1>
                     <h6>Apartio Rooms</h6>
                 </div>
             </div>
@@ -316,7 +305,7 @@
                             square Ft
                         </li>
                     </ul>
-                    
+
                     <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
                         @foreach (var item in @Model.LastProduct.Product.ProductImages.Take(3))
                         {
@@ -674,7 +663,7 @@
 </div>
 <!-- CATEGORY AREA END -->
 <!-- TESTIMONIAL AREA START (testimonial-7) -->
-<div class="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-70" data-bs-bg="../uploads/setting/@Model.Settings.FirstOrDefault().HomePageImg">
+<div class="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-70" data-bs-bg="~/assets/img/bg/20.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -685,103 +674,34 @@
             </div>
         </div>
         <div class="row ltn__testimonial-slider-5-active slick-arrow-1">
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p>
-                            <i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte
-                        </p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="~/assets/img/testimonial/1.jpg" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Jacob William</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p>
-                            <i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte
-                        </p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="~/assets/img/testimonial/2.jpg" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Kelian Anderson</h5>
-                                <label>Selling Agents</label>
+            @if (Model.Reviews.Count() > 0)
+            {
+                @foreach (var item in Model.Reviews)
+                {
+                    <div class="col-lg-4">
+                        <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                            <div class="ltn__testimoni-info">
+                                <p style="min-height:100px">
+                                    <i class="flaticon-left-quote-1"></i>
+                                    @item.Text
+                                </p>
+                                <div class="ltn__testimoni-info-inner">
+                                    <div class="ltn__testimoni-img">
+                                        <img src="~/assets/img/testimonial/1.jpg" alt="#">
+                                    </div>
+                                    <div class="ltn__testimoni-name-designation">
+                                        <h5>@item.AppUser.FullName</h5>
+                                        <label>Selling Agents</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p>
-                            <i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte
-                        </p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="~/assets/img/testimonial/3.jpg" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Adam Joseph</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p>
-                            <i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte
-                        </p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="~/assets/img/testimonial/4.jpg" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>James Carter</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
+
+                }
+            }
+
+
         </div>
     </div>
 </div>

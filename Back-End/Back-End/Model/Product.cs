@@ -15,6 +15,7 @@ namespace Back_End.Model
         public int TeamId { get; set; }
         public int StatusId { get; set; }
         public int CityId { get; set; }
+        public bool IsSold { get; set; }
         [Required]
         public bool IsFeatured { get; set; }
         [Required]

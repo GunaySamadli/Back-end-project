@@ -164,6 +164,7 @@ namespace Back_End.Areas.Manage.Controllers
             existSetting.AboutTitle = setting.AboutTitle;
             existSetting.AboutUrl = setting.AboutUrl;
             existSetting.AboutUrlText = setting.AboutUrlText;
+            existSetting.AboutSubDesc = setting.AboutSubDesc;
             existSetting.Adress = setting.Adress;
             existSetting.ContactMail = setting.ContactMail;
             existSetting.CopyRight = setting.CopyRight;

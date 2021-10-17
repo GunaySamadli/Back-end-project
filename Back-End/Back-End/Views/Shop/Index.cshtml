@@ -32,45 +32,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 order-lg-2 mb-100">
-                        <div class="ltn__shop-options">
-                            <ul class="justify-content-start">
-                                <li>
-                                    <div class="ltn__grid-list-tab-menu ">
-                                        <div class="nav">
-                                            <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-none">
-                                    <div class="showing-product-number text-right">
-                                        <span>Showing 1–12 of 18 results</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="short-by text-center">
-                                        <select class="nice-select">
-                                            <option>Default Sorting</option>
-                                            <option>Sort by popularity</option>
-                                            <option>Sort by new arrivals</option>
-                                            <option>Sort by price: low to high</option>
-                                            <option>Sort by price: high to low</option>
-                                        </select>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="short-by text-center">
-                                        <select class="nice-select">
-                                            <option>Per Page: 12</option>
-                                            <option>Per Page: 20</option>
-                                            <option>Per Page: 30</option>
-                                            <option>Per Page: 50</option>
-                                            <option>Per Page: 100</option>
-                                        </select>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="liton_product_grid">
                                 <div class="ltn__product-tab-content-inner ltn__product-grid-view">
@@ -191,7 +152,7 @@
                                         <div class="col-lg-12">
                                             <!-- Search Widget -->
                                             <div class="ltn__search-widget mb-30">
-                                                <form action="#">
+                                                <form method="get">
                                                     <input type="text" name="search" placeholder="Search your keyword...">
                                                     <button type="submit"><i class="fas fa-search"></i></button>
                                                 </form>
@@ -565,10 +526,11 @@
                         <div class="ltn__pagination-area text-center">
                             <div class="ltn__pagination">
                                 <div class="ltn__pagination">
+
                                     <ul>
                                         @if (selectedPage > 1)
                                         {
-                                            <li><a asp-action="index" asp-route-page="@(selectedPage - 1)"><i class="fas fa-angle-double-left"></i></a></li>
+                                            <li><a asp-controller="shop" asp-route-cityId="@ViewBag.CurrentCityId" asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-categoryId="@ViewBag.CurrentCategoryId" asp-action="index" asp-route-page="@(selectedPage - 1)"><i class="fas fa-angle-double-left"></i></a></li>
 
                                         }
                                         @{
@@ -578,11 +540,11 @@
 
                                         @for (int i = startPage; i <= endPage; i++)
                                         {
-                                            <li class="@(i==selectedPage?"active":"")"><a asp-action="index" asp-route-page="@i">@i</a></li>
+                                            <li class="@(i==selectedPage?"active":"")"><a asp-controller="shop" asp-route-cityId="@ViewBag.CurrentCityId" asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-categoryId="@ViewBag.CurrentCategoryId"  asp-action="index" asp-route-page="@i">@i</a></li>
                                         }
                                         @if (selectedPage < totalPage)
                                         {
-                                            <li><a asp-action="index" asp-route-page="@(selectedPage+1)"><i class="fas fa-angle-double-right"></i></a></li>
+                                            <li><a asp-controller="shop" asp-route-cityId="@ViewBag.CurrentCityId" asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-categoryId="@ViewBag.CurrentCategoryId"  asp-action="index" asp-route-page="@(selectedPage+1)"><i class="fas fa-angle-double-right"></i></a></li>
 
                                         }
 
@@ -600,16 +562,18 @@
                             <div class="widget ltn__menu-widget">
                                 <h4 class="ltn__widget-title">Category</h4>
                                 <ul>
-                                    @foreach (var product in Model.Products)
+                                    @foreach (var product in Model.Categories)
                                     {
                                         <li>
                                             <label class="checkbox-item">
-                                                @product.Category.Name
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
+                                                <a asp-action="index" asp-controller="shop" asp-route-categoryId="@product.Id">
+                                                    @product.Name
+                                                    <input type="checkbox" @(product.Id == @ViewBag.CurrentCategoryId ? "checked" : "")>
+                                                    <span class="checkmark"></span>
+                                                </a>
                                             </label>
                                             <span class="categorey-no">
-                                                1
+                                                @product.Products.Count()
                                             </span>
                                         </li>
 
@@ -618,100 +582,22 @@
                                 <hr>
                                 <h4 class="ltn__widget-title">Property Type</h4>
                                 <ul>
-                                    @foreach (var product in Model.Products)
+                                    @foreach (var product in Model.Statuses)
                                     {
                                         <li>
                                             <label class="checkbox-item">
-                                                @product.Status.Name
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
+                                                <a asp-action="index" asp-controller="shop" asp-route-categoryId="@product.Id">
+                                                    @product.Name
+                                                    <input type="checkbox" @(product.Id == @ViewBag.CurrentStatusId ? "checked" : "")>
+                                                    <span class="checkmark"></span>
+                                                </a>
                                             </label>
                                             <span class="categorey-no">
-                                                1
+                                                @product.Products.Count()
                                             </span>
                                         </li>
 
                                     }
-                                </ul>
-                                <hr>
-                                <h4 class="ltn__widget-title">Amenities</h4>
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Dishwasher
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,924</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Floor Coverings
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,610</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Internet
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">2,912</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Build Wardrobes
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">2,687</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Supermarket
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">1,853</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Kids Zone
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">893</span>
-                                    </li>
-                                </ul>
-                                <hr>
-                                <h4 class="ltn__widget-title">Price Renge</h4>
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Low Budget
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$5,000 - $10,000</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Medium
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$10,000 - $30,000</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            High Budget
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$30,000 Up</span>
-                                    </li>
                                 </ul>
                                 <hr>
                                 <!-- Price Filter Widget -->
@@ -726,69 +612,27 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <h4 class="ltn__widget-title">Bed/bath</h4>
+                                <h4 class="ltn__widget-title">Cities</h4>
                                 <ul>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Single
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,924</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Double
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,610</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Up To 3
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">2,912</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Up To 5
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">2,687</span>
-                                    </li>
+                                    @foreach (var product in Model.Cities)
+                                    {
+                                        <li>
+                                            <label class="checkbox-item">
+                                                <a asp-action="index" asp-controller="shop" asp-route-cityId="@product.Id">
+                                                    @product.Name
+                                                    <input type="checkbox" @(product.Id == @ViewBag.CurrentCityId ? "checked" : "")>
+                                                    <span class="checkmark"></span>
+                                                </a>
+                                            </label>
+                                            <span class="categorey-no">
+                                                @product.Products.Count()
+                                            </span>
+                                        </li>
+
+                                    }
                                 </ul>
                                 <hr>
-                                <h4 class="ltn__widget-title">Catagory</h4>
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Buying
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,924</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Renting
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">3,610</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Selling
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">2,912</span>
-                                    </li>
-                                </ul>
+
                             </div>
                            
                             <!-- Price Filter Widget -->

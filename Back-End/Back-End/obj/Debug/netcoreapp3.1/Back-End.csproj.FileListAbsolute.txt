@@ -354,3 +354,8 @@ C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Role\Create.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs
 C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\AddAdmin.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Views\Error\Error.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Status\Index.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Status\Create.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Status\Edit.cshtml.g.cs
+C:\Users\LENOVO\Desktop\Back-end-project\Back-End\Back-End\obj\Debug\netcoreapp3.1\Back-End.csproj.AssemblyReference.cache

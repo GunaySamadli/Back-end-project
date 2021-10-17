@@ -28,15 +28,15 @@ namespace Back_End.Areas.Manage.Controllers
         }
         public IActionResult Index(int page = 1, string search = null)
         {
+            var query = _context.Products.AsQueryable();
 
             ViewBag.CurrentSearch = search;
-            var query = _context.Products.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
             {
                 query = query.Where(x => x.Name.Contains(search));
             }
-            List<Product> products = _context.Products.Include(x => x.Category).Include(x => x.City).Include(x => x.Team).Include(x => x.Status).Include(x => x.ProductImages).Skip((page - 1) * 4).Take(4).ToList();
+            List<Product> products = query.Include(x => x.Category).Include(x => x.City).Include(x => x.Team).Include(x => x.Status).Include(x => x.ProductImages).Skip((page - 1) * 4).Take(4).ToList();
 
             ViewBag.TotalPage = Math.Ceiling(query.Count() / 4m);
             ViewBag.SelectedPage = page;

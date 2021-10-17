@@ -24,8 +24,32 @@ namespace Back_End.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(int page=1)
+        public IActionResult Index(int page=1, string search = null, int? categoryId = null, int? statusId = null, int? cityId = null)
         {
+            var query = _context.Products.AsQueryable();
+            ViewBag.CurrentCategoryId = categoryId;
+            ViewBag.CurrentStatusId = statusId;
+            ViewBag.CurrentSearch = search;
+            ViewBag.CurrentCityId = cityId;
+
+            if (!string.IsNullOrWhiteSpace(search))
+                query = query.Where(x => x.Name.Contains(search));
+
+            if (categoryId != null)
+                query = query.Where(x => x.CategoryId == categoryId);
+
+
+            if (statusId != null)
+                query = query.Where(x => x.StatusId == statusId);
+
+            if (cityId != null)
+                query = query.Where(x => x.CityId == cityId);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(x => x.Name.Contains(search));
+            }
+
             string strPr = HttpContext.Request.Cookies["Product"];
             ViewBag.Favorites = null;
             if (strPr != null)
@@ -35,12 +59,14 @@ namespace Back_End.Controllers
             }
             ShopViewModel shopVM = new ShopViewModel
             {
-                Products = _context.Products.Include(x => x.ProductImages).
+                Products = query.Where(x=>x.IsSold==false).Include(x => x.ProductImages).
                 Include(x => x.Status).Include(x => x.City).Include(x => x.Team).Skip((page - 1) * 4).Take(4).ToList(),
                 Statuses = _context.Statuses.ToList(),
-                Categories = _context.Categories.ToList(),
+                Categories = _context.Categories.Include(x=>x.Products).ToList(),
+                Cities = _context.Cities.Include(x => x.Products).ToList()
+
             };
-            ViewBag.TotalPage = Math.Ceiling(_context.Teams.Count() / 4m);
+            ViewBag.TotalPage = Math.Ceiling(query.Count() / 4m);
             ViewBag.SelectedPage = page;
             return View(shopVM);
         }
